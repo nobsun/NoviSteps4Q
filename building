@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+source .curname
+stack build 4Q:exe:$CURRENT_ATCODER_EXE_NAME

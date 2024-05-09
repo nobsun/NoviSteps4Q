@@ -1,0 +1,16 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "4Q:lib"
+
+    - path: "./app/Main.hs"
+      component: "4Q:exe:4Q"
+
+    - path: "./test/spec.hs"
+      component: "4Q:test:4Q-test"
+  
+    - path: "./test/LibSpec.hs"
+      component: "4Q:test:4Q-test"
+  
+    - path: "./test/doctests.hs"
+      component: "4Q:test:4Q-doctest"

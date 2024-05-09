@@ -1,0 +1,98 @@
+name:                4Q
+version:             0.0.0
+github:              nobsun/4Q
+license:             BSD3
+author:              Nobuo Yamashita
+maintainer:          nobsun@sampou.org
+copyright:           © 2024, Nobuo Yamashita
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Experiment
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/nobsun/4Q#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- unicode-show
+- bytestring
+- utf8-string
+- time
+- hspec
+- main-tester
+- doctest
+- aeson
+- gloss
+- array
+- containers
+- free
+- recursion-schemes
+- vector
+
+language: GHC2021
+
+default-extensions:
+- ImplicitParams
+- ImportQualifiedPost
+- LambdaCase
+- LexicalNegation
+- MultiWayIf
+- NPlusKPatterns
+- OverloadedStrings
+- DataKinds
+- PolyKinds
+- NoStarIsType
+- TypeFamilyDependencies
+- UndecidableInstances
+
+ghc-options:
+- -Wall
+- -Wno-unticked-promoted-constructors
+- -Wno-unused-imports
+- -Wno-unused-top-binds
+- -Wno-orphans
+
+library:
+  source-dirs: src
+
+executables:
+  4Q:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -rtsopts
+    # - -threaded
+    # - -with-rtsopts=-N
+    dependencies:
+    - 4Q
+
+tests:
+  4Q-test:
+    main:                spec.hs
+    source-dirs:         test
+    # ghc-options:
+    # - -threaded
+    # - -rtsopts
+    # - -with-rtsopts=-N
+    dependencies:
+    - 4Q
+    - hspec
+    - main-tester
+
+  4Q-doctest:
+    main:                doctests.hs
+    source-dirs:         test
+    # ghc-options:
+    # - -threaded
+    # - -rtsopts
+    # - -with-rtsopts=-N
+    dependencies:
+    - 4Q
+    - doctest

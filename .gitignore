@@ -1,0 +1,11 @@
+.stack-work/
+dist-new/
+4Q.cabal
+*.log
+.curproj
+.curname
+!programming_session.log
+core
+*.hi
+*.o
+*~
