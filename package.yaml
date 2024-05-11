@@ -63,6 +63,102 @@ library:
   source-dirs: src
 
 executables:
+  worldtourfinals:
+    main:            Main.hs
+    source-dirs:     app/worldtourfinals
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  peak:
+    main:            Main.hs
+    source-dirs:     app/peak
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  consecutive:
+    main:            Main.hs
+    source-dirs:     app/consecutive
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  electionquickreport:
+    main:            Main.hs
+    source-dirs:     app/electionquickreport
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  sumofnumbersgreaterthanme:
+    main:            Main.hs
+    source-dirs:     app/sumofnumbersgreaterthanme
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  repunittrio:
+    main:            Main.hs
+    source-dirs:     app/repunittrio
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  liningup2:
+    main:            Main.hs
+    source-dirs:     app/liningup2
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  c343:
+    main:            Main.hs
+    source-dirs:     app/c343
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  apbpc:
+    main:            Main.hs
+    source-dirs:     app/apbpc
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  airportcode:
+    main:            Main.hs
+    source-dirs:     app/airportcode
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  mergetheballs:
+    main:            Main.hs
+    source-dirs:     app/mergetheballs
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  standingontheshoulders:
+    main:            Main.hs
+    source-dirs:     app/standingontheshoulders
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
   4Q:
     main:                Main.hs
     source-dirs:         app

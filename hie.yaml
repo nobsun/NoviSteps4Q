@@ -6,11 +6,83 @@ cradle:
     - path: "./app/Main.hs"
       component: "4Q:exe:4Q"
 
-    - path: "./test/spec.hs"
-      component: "4Q:test:4Q-test"
-  
-    - path: "./test/LibSpec.hs"
-      component: "4Q:test:4Q-test"
-  
-    - path: "./test/doctests.hs"
+    - path: "./app/Paths_4Q.hs"
+      component: "4Q:exe:4Q"
+
+    - path: "./app/airportcode/Main.hs"
+      component: "4Q:exe:airportcode"
+
+    - path: "./app/airportcode/Paths_4Q.hs"
+      component: "4Q:exe:airportcode"
+
+    - path: "./app/apbpc/Main.hs"
+      component: "4Q:exe:apbpc"
+
+    - path: "./app/apbpc/Paths_4Q.hs"
+      component: "4Q:exe:apbpc"
+
+    - path: "./app/c343/Main.hs"
+      component: "4Q:exe:c343"
+
+    - path: "./app/c343/Paths_4Q.hs"
+      component: "4Q:exe:c343"
+
+    - path: "./app/consecutive/Main.hs"
+      component: "4Q:exe:consecutive"
+
+    - path: "./app/consecutive/Paths_4Q.hs"
+      component: "4Q:exe:consecutive"
+
+    - path: "./app/electionquickreport/Main.hs"
+      component: "4Q:exe:electionquickreport"
+
+    - path: "./app/electionquickreport/Paths_4Q.hs"
+      component: "4Q:exe:electionquickreport"
+
+    - path: "./app/liningup2/Main.hs"
+      component: "4Q:exe:liningup2"
+
+    - path: "./app/liningup2/Paths_4Q.hs"
+      component: "4Q:exe:liningup2"
+
+    - path: "./app/mergetheballs/Main.hs"
+      component: "4Q:exe:mergetheballs"
+
+    - path: "./app/mergetheballs/Paths_4Q.hs"
+      component: "4Q:exe:mergetheballs"
+
+    - path: "./app/peak/Main.hs"
+      component: "4Q:exe:peak"
+
+    - path: "./app/peak/Paths_4Q.hs"
+      component: "4Q:exe:peak"
+
+    - path: "./app/repunittrio/Main.hs"
+      component: "4Q:exe:repunittrio"
+
+    - path: "./app/repunittrio/Paths_4Q.hs"
+      component: "4Q:exe:repunittrio"
+
+    - path: "./app/standingontheshoulders/Main.hs"
+      component: "4Q:exe:standingontheshoulders"
+
+    - path: "./app/standingontheshoulders/Paths_4Q.hs"
+      component: "4Q:exe:standingontheshoulders"
+
+    - path: "./app/sumofnumbersgreaterthanme/Main.hs"
+      component: "4Q:exe:sumofnumbersgreaterthanme"
+
+    - path: "./app/sumofnumbersgreaterthanme/Paths_4Q.hs"
+      component: "4Q:exe:sumofnumbersgreaterthanme"
+
+    - path: "./app/worldtourfinals/Main.hs"
+      component: "4Q:exe:worldtourfinals"
+
+    - path: "./app/worldtourfinals/Paths_4Q.hs"
+      component: "4Q:exe:worldtourfinals"
+
+    - path: "./test"
       component: "4Q:test:4Q-doctest"
+
+    - path: "./test"
+      component: "4Q:test:4Q-test"
