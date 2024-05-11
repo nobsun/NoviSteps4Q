@@ -44,7 +44,9 @@ solve = \ case
             dss     -> case maximum (fst <$> tracing dss) of
                 m        -> phi . tracing . ((m -) *** scanl (+) 0) <$> dss
                     where
-                        phi (r,rs) = fst $ spanCount (r >=) rs
+                        phi (r,rs) = case r of
+                            0 -> 0
+                            _ -> fst $ spanCount (r >=) rs
 
 ccount :: [Int] -> Int -> String -> (Int, [Maybe Int])
 ccount xs n = first ((n+) . fst) . mapAccumL phi (0,xs)
