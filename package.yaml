@@ -63,6 +63,110 @@ library:
   source-dirs: src
 
 executables:
+  bell:
+    main:            Main.hs
+    source-dirs:     app/bell
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  frog2:
+    main:            Main.hs
+    source-dirs:     app/frog2
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  crosssum:
+    main:            Main.hs
+    source-dirs:     app/crosssum
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  cpclasses:
+    main:            Main.hs
+    source-dirs:     app/cpclasses
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  ex25:
+    main:            Main.hs
+    source-dirs:     app/ex25
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  factorialyencoin:
+    main:            Main.hs
+    source-dirs:     app/factorialyencoin
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  countingarrays:
+    main:            Main.hs
+    source-dirs:     app/countingarrays
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  getcloser:
+    main:            Main.hs
+    source-dirs:     app/getcloser
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  lightitup:
+    main:            Main.hs
+    source-dirs:     app/lightitup
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  numberbox:
+    main:            Main.hs
+    source-dirs:     app/numberbox
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  strictlysuperior:
+    main:            Main.hs
+    source-dirs:     app/strictlysuperior
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  whoissaikyo:
+    main:            Main.hs
+    source-dirs:     app/whoissaikyo
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
+  cutoff:
+    main:            Main.hs
+    source-dirs:     app/cutoff
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - 4Q
+
   worldtourfinals:
     main:            Main.hs
     source-dirs:     app/worldtourfinals
