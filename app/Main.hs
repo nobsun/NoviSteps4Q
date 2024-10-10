@@ -14,6 +14,7 @@ import Data.Maybe
 import Data.Ord
 
 import Control.Arrow
+import Control.Applicative
 import Data.Array
 import Data.Bool
 import Data.Char
@@ -63,6 +64,10 @@ class InterfaceForOJS a where
     encode :: [[a]] -> B.ByteString
     encode = B.unlines . map showBs
 
+instance InterfaceForOJS B.ByteString where
+    readB = id
+    showB = id
+
 instance InterfaceForOJS Int where
     readB = readInt
     showB = showInt
@@ -100,6 +105,21 @@ showDbl :: Double -> B.ByteString
 showDbl = B.pack . show
 
 {- Bonsai -}
+
+{- debug -}
+trace :: String -> a -> a
+trace | debug     = Debug.trace
+      | otherwise = const id
+
+tracing :: Show a => a -> a
+tracing = trace . show <*> id
+
+{- error -}
+impossible :: a
+impossible = error "impossible"
+
+invalid :: a
+invalid = error "invalid input"
 
 {- |
 >>> combinations 2 "abcd"
@@ -186,12 +206,3 @@ countif = iter 0
     where
         iter a p (x:xs) = iter (bool a (succ a) (p x)) p xs
         iter a _ []     = a
-
-{- error -}
-invalid :: a
-invalid = error "invalid input"
-
-{- debug -}
-trace :: String -> a -> a
-trace | debug     = Debug.trace
-      | otherwise = const id

@@ -1,6 +1,6 @@
-name:                4Q
+name:                NoviSteps4Q
 version:             0.0.0
-github:              nobsun/4Q
+github:              nobsun/NoviSteps4Q
 license:             BSD3
 author:              Nobuo Yamashita
 maintainer:          nobsun@sampou.org
@@ -17,24 +17,91 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/nobsun/4Q#readme>
+description:         Please see the README on GitHub at <https://github.com/nobsun/NoviSteps4Q#readme>
 
 dependencies:
 - base >= 4.7 && < 5
-- unicode-show
-- bytestring
 - utf8-string
-- time
+- unicode-show
 - hspec
 - main-tester
-- doctest
-- aeson
-- gloss
+- Cabal
+- Cabal-syntax
+- QuickCheck
+- adjunctions
 - array
+- attoparsec
+- bifunctors
+- binary
+- bitvec
+- bytestring
+- comonad
 - containers
+- contravariant
+- deepseq
+- directory
+- distributive
+- exceptions
+- extra
+- fgl
+- filepath
 - free
-- recursion-schemes
+- ghc-bignum
+- ghc-boot-th
+- ghc-prim
+- hashable
+- heaps
+- indexed-traversable
+- indexed-traversable-instances
+- integer-gmp
+- integer-logarithms
+- kan-extensions
+- lens
+- linear-base
+- list-t
+- massiv
+- megaparsec
+- mono-traversable
+- mtl
+- mutable-containers
+- mwc-random
+- parallel
+- parsec
+- parser-combinators
+- pretty
+- primitive
+- process
+- profunctors
+- psqueues
+- random
+- reflection
+- regex-tdfa
+- safe-exceptions
+- scientific
+- semialign
+- semigroupoids
+- split
+- stm
+- strict
+- strict-lens
+- tagged
+- template-haskell
+- text
+- tf-random
+- these
+- these-lens
+- time
+- transformers
+- trifecta
+- unboxing-vector
+- unix
+- unordered-containers
+- utility-ht
 - vector
+- vector-algorithms
+- vector-stream
+- vector-th-unbox
+- xhtml
 
 language: GHC2021
 
@@ -63,236 +130,42 @@ library:
   source-dirs: src
 
 executables:
-  bell:
-    main:            Main.hs
-    source-dirs:     app/bell
+  add-entry:
+    main:                Main.hs
+    source-dirs:         app/add-entry
     ghc-options:
     - -rtsopts
     dependencies:
-    - 4Q
+    - NoviSteps4Q
 
-  frog2:
-    main:            Main.hs
-    source-dirs:     app/frog2
+  judge-hs:
+    main:                Main.hs
+    source-dirs:         app/judge-hs
     ghc-options:
     - -rtsopts
     dependencies:
-    - 4Q
+    - NoviSteps4Q
 
-  crosssum:
-    main:            Main.hs
-    source-dirs:     app/crosssum
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  cpclasses:
-    main:            Main.hs
-    source-dirs:     app/cpclasses
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  ex25:
-    main:            Main.hs
-    source-dirs:     app/ex25
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  factorialyencoin:
-    main:            Main.hs
-    source-dirs:     app/factorialyencoin
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  countingarrays:
-    main:            Main.hs
-    source-dirs:     app/countingarrays
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  getcloser:
-    main:            Main.hs
-    source-dirs:     app/getcloser
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  lightitup:
-    main:            Main.hs
-    source-dirs:     app/lightitup
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  numberbox:
-    main:            Main.hs
-    source-dirs:     app/numberbox
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  strictlysuperior:
-    main:            Main.hs
-    source-dirs:     app/strictlysuperior
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  whoissaikyo:
-    main:            Main.hs
-    source-dirs:     app/whoissaikyo
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  cutoff:
-    main:            Main.hs
-    source-dirs:     app/cutoff
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  worldtourfinals:
-    main:            Main.hs
-    source-dirs:     app/worldtourfinals
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  peak:
-    main:            Main.hs
-    source-dirs:     app/peak
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  consecutive:
-    main:            Main.hs
-    source-dirs:     app/consecutive
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  electionquickreport:
-    main:            Main.hs
-    source-dirs:     app/electionquickreport
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  sumofnumbersgreaterthanme:
-    main:            Main.hs
-    source-dirs:     app/sumofnumbersgreaterthanme
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  repunittrio:
-    main:            Main.hs
-    source-dirs:     app/repunittrio
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  liningup2:
-    main:            Main.hs
-    source-dirs:     app/liningup2
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  c343:
-    main:            Main.hs
-    source-dirs:     app/c343
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  apbpc:
-    main:            Main.hs
-    source-dirs:     app/apbpc
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  airportcode:
-    main:            Main.hs
-    source-dirs:     app/airportcode
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  mergetheballs:
-    main:            Main.hs
-    source-dirs:     app/mergetheballs
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  standingontheshoulders:
-    main:            Main.hs
-    source-dirs:     app/standingontheshoulders
-    ghc-options:
-    - -rtsopts
-    dependencies:
-    - 4Q
-
-  4Q:
+  NoviSteps4Q:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
     - -rtsopts
-    # - -threaded
-    # - -with-rtsopts=-N
     dependencies:
-    - 4Q
+    - NoviSteps4Q
 
 tests:
-  4Q-test:
+  NoviSteps4Q-test:
     main:                spec.hs
     source-dirs:         test
-    # ghc-options:
-    # - -threaded
-    # - -rtsopts
-    # - -with-rtsopts=-N
     dependencies:
-    - 4Q
+    - NoviSteps4Q
     - hspec
     - main-tester
 
-  4Q-doctest:
+  NoviSteps4Q-doctest:
     main:                doctests.hs
     source-dirs:         test
-    # ghc-options:
-    # - -threaded
-    # - -rtsopts
-    # - -with-rtsopts=-N
     dependencies:
-    - 4Q
+    - NoviSteps4Q
     - doctest

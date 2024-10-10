@@ -1,4 +1,4 @@
 #!/bin/bash
 
 source .curname
-stack build 4Q:exe:$CURRENT_ATCODER_EXE_NAME
+stack build NoviSteps4Q:exe:$CURRENT_STACK_EXE_ENTRY

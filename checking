@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if type "judge-hs" > /dev/null 2>&1; then
+  :
+else 
+  stack install NoviSteps4Q:exe:judge-hs
+fi
+
+source .curname
+stack exec -- judge-hs $1 $CURRENT_ATCODER_EXE_ENTRY

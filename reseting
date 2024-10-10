@@ -1,5 +1,4 @@
 #!/bin/bash
 
-echo "export CURRENT_ATCODER_EXE_NAME=$1" > .curname
-
+echo "export CURRENT_STACK_EXE_ENTRY=$1" > .curname
 
