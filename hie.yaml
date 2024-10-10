@@ -1,166 +1,34 @@
 cradle:
   stack:
     - path: "./src"
-      component: "4Q:lib"
+      component: "NoviSteps4Q:lib"
 
     - path: "./app/Main.hs"
-      component: "4Q:exe:4Q"
+      component: "NoviSteps4Q:exe:NoviSteps4Q"
 
-    - path: "./app/Paths_4Q.hs"
-      component: "4Q:exe:4Q"
+    - path: "./app/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:NoviSteps4Q"
 
-    - path: "./app/airportcode/Main.hs"
-      component: "4Q:exe:airportcode"
+    - path: "./app/add-entry/Main.hs"
+      component: "NoviSteps4Q:exe:add-entry"
 
-    - path: "./app/airportcode/Paths_4Q.hs"
-      component: "4Q:exe:airportcode"
+    - path: "./app/add-entry/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:add-entry"
 
-    - path: "./app/apbpc/Main.hs"
-      component: "4Q:exe:apbpc"
+    - path: "./app/judge-hs/Main.hs"
+      component: "NoviSteps4Q:exe:judge-hs"
 
-    - path: "./app/apbpc/Paths_4Q.hs"
-      component: "4Q:exe:apbpc"
+    - path: "./app/judge-hs/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:judge-hs"
 
-    - path: "./app/bell/Main.hs"
-      component: "4Q:exe:bell"
+    - path: "./app/worldladder/Main.hs"
+      component: "NoviSteps4Q:exe:worldladder"
 
-    - path: "./app/bell/Paths_4Q.hs"
-      component: "4Q:exe:bell"
-
-    - path: "./app/c343/Main.hs"
-      component: "4Q:exe:c343"
-
-    - path: "./app/c343/Paths_4Q.hs"
-      component: "4Q:exe:c343"
-
-    - path: "./app/consecutive/Main.hs"
-      component: "4Q:exe:consecutive"
-
-    - path: "./app/consecutive/Paths_4Q.hs"
-      component: "4Q:exe:consecutive"
-
-    - path: "./app/countingarrays/Main.hs"
-      component: "4Q:exe:countingarrays"
-
-    - path: "./app/countingarrays/Paths_4Q.hs"
-      component: "4Q:exe:countingarrays"
-
-    - path: "./app/cpclasses/Main.hs"
-      component: "4Q:exe:cpclasses"
-
-    - path: "./app/cpclasses/Paths_4Q.hs"
-      component: "4Q:exe:cpclasses"
-
-    - path: "./app/crosssum/Main.hs"
-      component: "4Q:exe:crosssum"
-
-    - path: "./app/crosssum/Paths_4Q.hs"
-      component: "4Q:exe:crosssum"
-
-    - path: "./app/cutoff/Main.hs"
-      component: "4Q:exe:cutoff"
-
-    - path: "./app/cutoff/Paths_4Q.hs"
-      component: "4Q:exe:cutoff"
-
-    - path: "./app/electionquickreport/Main.hs"
-      component: "4Q:exe:electionquickreport"
-
-    - path: "./app/electionquickreport/Paths_4Q.hs"
-      component: "4Q:exe:electionquickreport"
-
-    - path: "./app/ex25/Main.hs"
-      component: "4Q:exe:ex25"
-
-    - path: "./app/ex25/Paths_4Q.hs"
-      component: "4Q:exe:ex25"
-
-    - path: "./app/factorialyencoin/Main.hs"
-      component: "4Q:exe:factorialyencoin"
-
-    - path: "./app/factorialyencoin/Paths_4Q.hs"
-      component: "4Q:exe:factorialyencoin"
-
-    - path: "./app/frog2/Main.hs"
-      component: "4Q:exe:frog2"
-
-    - path: "./app/frog2/Paths_4Q.hs"
-      component: "4Q:exe:frog2"
-
-    - path: "./app/getcloser/Main.hs"
-      component: "4Q:exe:getcloser"
-
-    - path: "./app/getcloser/Paths_4Q.hs"
-      component: "4Q:exe:getcloser"
-
-    - path: "./app/lightitup/Main.hs"
-      component: "4Q:exe:lightitup"
-
-    - path: "./app/lightitup/Paths_4Q.hs"
-      component: "4Q:exe:lightitup"
-
-    - path: "./app/liningup2/Main.hs"
-      component: "4Q:exe:liningup2"
-
-    - path: "./app/liningup2/Paths_4Q.hs"
-      component: "4Q:exe:liningup2"
-
-    - path: "./app/mergetheballs/Main.hs"
-      component: "4Q:exe:mergetheballs"
-
-    - path: "./app/mergetheballs/Paths_4Q.hs"
-      component: "4Q:exe:mergetheballs"
-
-    - path: "./app/numberbox/Main.hs"
-      component: "4Q:exe:numberbox"
-
-    - path: "./app/numberbox/Paths_4Q.hs"
-      component: "4Q:exe:numberbox"
-
-    - path: "./app/peak/Main.hs"
-      component: "4Q:exe:peak"
-
-    - path: "./app/peak/Paths_4Q.hs"
-      component: "4Q:exe:peak"
-
-    - path: "./app/repunittrio/Main.hs"
-      component: "4Q:exe:repunittrio"
-
-    - path: "./app/repunittrio/Paths_4Q.hs"
-      component: "4Q:exe:repunittrio"
-
-    - path: "./app/standingontheshoulders/Main.hs"
-      component: "4Q:exe:standingontheshoulders"
-
-    - path: "./app/standingontheshoulders/Paths_4Q.hs"
-      component: "4Q:exe:standingontheshoulders"
-
-    - path: "./app/strictlysuperior/Main.hs"
-      component: "4Q:exe:strictlysuperior"
-
-    - path: "./app/strictlysuperior/Paths_4Q.hs"
-      component: "4Q:exe:strictlysuperior"
-
-    - path: "./app/sumofnumbersgreaterthanme/Main.hs"
-      component: "4Q:exe:sumofnumbersgreaterthanme"
-
-    - path: "./app/sumofnumbersgreaterthanme/Paths_4Q.hs"
-      component: "4Q:exe:sumofnumbersgreaterthanme"
-
-    - path: "./app/whoissaikyo/Main.hs"
-      component: "4Q:exe:whoissaikyo"
-
-    - path: "./app/whoissaikyo/Paths_4Q.hs"
-      component: "4Q:exe:whoissaikyo"
-
-    - path: "./app/worldtourfinals/Main.hs"
-      component: "4Q:exe:worldtourfinals"
-
-    - path: "./app/worldtourfinals/Paths_4Q.hs"
-      component: "4Q:exe:worldtourfinals"
+    - path: "./app/worldladder/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:worldladder"
 
     - path: "./test"
-      component: "4Q:test:4Q-doctest"
+      component: "NoviSteps4Q:test:NoviSteps4Q-doctest"
 
     - path: "./test"
-      component: "4Q:test:4Q-test"
+      component: "NoviSteps4Q:test:NoviSteps4Q-test"

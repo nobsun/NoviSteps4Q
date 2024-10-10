@@ -130,6 +130,14 @@ library:
   source-dirs: src
 
 executables:
+  worldladder:
+    main:               Main.hs
+    source-dirs:        app/worldladder
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   add-entry:
     main:                Main.hs
     source-dirs:         app/add-entry
