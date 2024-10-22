@@ -34,21 +34,24 @@ debug :: Bool
 debug = () /= ()
 
 type I = Int
-type O = Int
+type O = String
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = [[(I,I,I)]] -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    [[(a,b,c),(d,e,f)],[(g,h,i),(j,k,l)]] 
+        -> bool "No" "Yes" $ p && q && r
+        where 
+            p = max a g < min d j
+            q = max b h < min e k
+            r = max c i < min f l
+    _ -> impossible
 
 wrap :: Solver -> ([[I]] -> [[O]])
-wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+wrap ff = \ case
+    [a,b,c,d,e,f]:[g,h,i,j,k,l]:_ -> case ff [[(a,b,c),(d,e,f)],[(g,h,i),(j,k,l)]] of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

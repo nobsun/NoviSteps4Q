@@ -33,23 +33,44 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
+type I = String
 type O = Int
 
-type Dom = I
+type Dom   = (Int,[(String, Int)])
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (n,qs) -> iter 0 0 1 (second pred <$> qs) where
+        iter c l r = \ case
+            ("L", i):rs
+                | lr < li   -> iter (c + n - li) i r rs
+                | otherwise -> iter (c + li) i r rs
+                where
+                    li = subtract l i `mod` n
+            ("R", i):rs
+                | rl < ri   -> iter (c + n - ri) l i rs
+                | otherwise -> iter (c + ri) l i rs
+                where
+                    ri = subtract r i `mod` n
+            (_,_):_   -> invalid
+            [] -> c
+            where
+                lr = subtract l r `mod` n
+                rl = n - lr
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n,_]:qs -> case f (read n, conv <$> qs) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
+    where 
+        conv = \ case
+            [h,t] -> (h, read t)
+            _     -> invalid
+
 
 main :: IO ()
 main = B.interact (encode . wrap solve . decode)

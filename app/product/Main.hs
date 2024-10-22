@@ -15,6 +15,7 @@ import Data.Ord
 
 import Control.Arrow
 import Control.Applicative
+import Control.Monad
 import Data.Array
 import Data.Bool
 import Data.Char
@@ -31,24 +32,26 @@ import Data.Vector qualified as V
 import Debug.Trace qualified as Debug
 
 debug :: Bool
-debug = () /= ()
+debug = () == ()
 
-type I = Int
+type I = Integer
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = (I, [[I]]) -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (x,bss) -> countif (x ==) $ cp bss
+
+cp :: [[Integer]] -> [Integer]
+cp = \ case
+    xs:xss -> [ x * y | x <- xs, !y <- ys ] where ys = cp xss
+    []     -> [1]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [_,x]:bss -> case f (x, tail <$> bss) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
@@ -75,6 +78,10 @@ instance InterfaceForOJS Int where
     readB = readInt
     showB = showInt
 
+instance InterfaceForOJS Integer where
+    readB = readInteger
+    showB = showInteger
+
 instance InterfaceForOJS String where
     readB = readStr
     showB = showStr
@@ -94,6 +101,12 @@ readInt = fst . fromJust . B.readInt
 
 showInt :: Int -> B.ByteString
 showInt = B.pack . show
+
+readInteger :: B.ByteString -> Integer
+readInteger = fst . fromJust . B.readInteger
+
+showInteger :: Integer -> B.ByteString
+showInteger = B.pack . show
 
 readStr :: B.ByteString -> String
 readStr = B.unpack
@@ -212,7 +225,4 @@ fromTuple :: (a,a) -> [a]
 fromTuple (x,y) = [x,y]
 
 countif :: (a -> Bool) -> [a] -> Int
-countif = iter 0
-    where
-        iter a p (x:xs) = iter (bool a (succ a) (p x)) p xs
-        iter a _ []     = a
+countif p = foldl' (\ !a !x -> if p x then a + 1 else a) 0

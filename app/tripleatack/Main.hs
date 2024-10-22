@@ -36,19 +36,25 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = [I] -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    hs -> foldl' phi 0 hs
+    where
+        phi t h = if
+            | h <= 0    -> t
+            | 5 <= h    -> phi (t + q * 3) r
+            | otherwise -> phi t' (h - dmg)
+            where
+                (q,r) = h `divMod` 5
+                t'    = succ t
+                dmg   = bool 1 3 (t' `mod` 3 == 0)
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:hs:_ -> case f hs of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
@@ -75,6 +81,10 @@ instance InterfaceForOJS Int where
     readB = readInt
     showB = showInt
 
+instance InterfaceForOJS Integer where
+    readB = readInteger
+    showB = showInteger
+
 instance InterfaceForOJS String where
     readB = readStr
     showB = showStr
@@ -94,6 +104,12 @@ readInt = fst . fromJust . B.readInt
 
 showInt :: Int -> B.ByteString
 showInt = B.pack . show
+
+readInteger :: B.ByteString -> Integer
+readInteger = fst . fromJust . B.readInteger
+
+showInteger :: Integer -> B.ByteString
+showInteger = B.pack . show
 
 readStr :: B.ByteString -> String
 readStr = B.unpack

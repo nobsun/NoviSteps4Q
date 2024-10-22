@@ -36,19 +36,16 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = (I,[I]) -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (k,as) -> min k (mex $ S.toList $ S.fromList as)
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [_,k]:as:_ -> case f (k,as) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

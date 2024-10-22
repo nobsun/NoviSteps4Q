@@ -34,21 +34,19 @@ debug :: Bool
 debug = () /= ()
 
 type I = Int
-type O = Int
+type O = String
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = (I,[I]) -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (d,as) -> bool "No" "Yes" (maximum bs <= d) where
+        bs = map (uncurry subtract . toTuple) $ splitEvery 2 $ sort as
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [_,d]:as:_ -> case f (d,as) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

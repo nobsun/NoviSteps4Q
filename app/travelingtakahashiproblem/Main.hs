@@ -31,24 +31,27 @@ import Data.Vector qualified as V
 import Debug.Trace qualified as Debug
 
 debug :: Bool
-debug = () /= ()
+debug = () == ()
 
 type I = Int
-type O = Int
+type O = Double
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = (I,[(Double,Double)]) -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (n,xys) -> sum $ map dist $ take (succ n) $ zip <*> tail $ cycle xys
+
+dist :: ((Double,Double),(Double,Double)) -> Double
+dist ((a,b),(c,d)) = sqrt $ sqr (a-c) + sqr (b-d)
+
+sqr :: Double -> Double
+sqr x = x * x
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n]:xys -> case f (n, (0,0) : map (toTuple . map fromIntegral) xys) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

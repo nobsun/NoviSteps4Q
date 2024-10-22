@@ -24,10 +24,9 @@ main = do
     loop projid ins outs
 
 loop :: String -> [FilePath] -> [FilePath] -> IO ()
-loop _   []     _      = return ()
 loop cmd (i:is) (o:os) = do
     start <- getCurrentTime
-    cp@(_, Just hout, _, _)
+    (_, Just hout, _, _)
             <- createProcess 
                 (shell ("stack exec " ++ cmd 
                  -- ++ " +RTS -p -RTS"
@@ -40,3 +39,4 @@ loop cmd (i:is) (o:os) = do
     end <- getCurrentTime
     print (diffUTCTime end start)
     loop cmd is os
+loop _  _  _      = return ()

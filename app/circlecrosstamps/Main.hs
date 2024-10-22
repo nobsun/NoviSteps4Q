@@ -33,22 +33,25 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
+type I = Char
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = [I] -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    s -> iter 0 s where
+        iter c = \ case
+            []  -> c
+            [_] -> c
+            x:ys@(y:zs)
+                | x /= y    -> iter (succ c) zs
+                | otherwise -> iter c ys
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:s:_ -> case f s of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

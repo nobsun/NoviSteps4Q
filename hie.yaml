@@ -3,6 +3,18 @@ cradle:
     - path: "./src"
       component: "NoviSteps4Q:lib"
 
+    - path: "./app/1dreversi/Main.hs"
+      component: "NoviSteps4Q:exe:1dreversi"
+
+    - path: "./app/1dreversi/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:1dreversi"
+
+    - path: "./app/5qsentou/Main.hs"
+      component: "NoviSteps4Q:exe:5qsentou"
+
+    - path: "./app/5qsentou/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:5qsentou"
+
     - path: "./app/Main.hs"
       component: "NoviSteps4Q:exe:NoviSteps4Q"
 
@@ -15,11 +27,185 @@ cradle:
     - path: "./app/add-entry/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:add-entry"
 
+    - path: "./app/atcodeerandelectionreport/Main.hs"
+      component: "NoviSteps4Q:exe:atcodeerandelectionreport"
+
+    - path: "./app/atcodeerandelectionreport/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:atcodeerandelectionreport"
+
+    - path: "./app/ballsandbagquery/Main.hs"
+      component: "NoviSteps4Q:exe:ballsandbagquery"
+
+    - path: "./app/ballsandbagquery/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:ballsandbagquery"
+
+    - path: "./app/brutmphyhiizp/Main.hs"
+      component: "NoviSteps4Q:exe:brutmphyhiizp"
+
+    - path: "./app/brutmphyhiizp/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:brutmphyhiizp"
+
+    - path: "./app/candybutton/Main.hs"
+      component: "NoviSteps4Q:exe:candybutton"
+
+    - path: "./app/candybutton/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:candybutton"
+
+    - path: "./app/cheese/Main.hs"
+      component: "NoviSteps4Q:exe:cheese"
+
+    - path: "./app/cheese/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:cheese"
+
+    - path: "./app/chooseintegers/Main.hs"
+      component: "NoviSteps4Q:exe:chooseintegers"
+
+    - path: "./app/chooseintegers/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:chooseintegers"
+
+    - path: "./app/christmaseve/Main.hs"
+      component: "NoviSteps4Q:exe:christmaseve"
+
+    - path: "./app/christmaseve/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:christmaseve"
+
+    - path: "./app/circlecrosstamps/Main.hs"
+      component: "NoviSteps4Q:exe:circlecrosstamps"
+
+    - path: "./app/circlecrosstamps/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:circlecrosstamps"
+
+    - path: "./app/dance/Main.hs"
+      component: "NoviSteps4Q:exe:dance"
+
+    - path: "./app/dance/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:dance"
+
+    - path: "./app/enumeratesequences/Main.hs"
+      component: "NoviSteps4Q:exe:enumeratesequences"
+
+    - path: "./app/enumeratesequences/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:enumeratesequences"
+
+    - path: "./app/findseiza/Main.hs"
+      component: "NoviSteps4Q:exe:findseiza"
+
+    - path: "./app/findseiza/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:findseiza"
+
+    - path: "./app/gohome/Main.hs"
+      component: "NoviSteps4Q:exe:gohome"
+
+    - path: "./app/gohome/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:gohome"
+
+    - path: "./app/handsonring/Main.hs"
+      component: "NoviSteps4Q:exe:handsonring"
+
+    - path: "./app/handsonring/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:handsonring"
+
+    - path: "./app/intersectionofcuboids/Main.hs"
+      component: "NoviSteps4Q:exe:intersectionofcuboids"
+
+    - path: "./app/intersectionofcuboids/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:intersectionofcuboids"
+
+    - path: "./app/irohalovesstringabc/Main.hs"
+      component: "NoviSteps4Q:exe:irohalovesstringabc"
+
+    - path: "./app/irohalovesstringabc/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:irohalovesstringabc"
+
     - path: "./app/judge-hs/Main.hs"
       component: "NoviSteps4Q:exe:judge-hs"
 
     - path: "./app/judge-hs/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:judge-hs"
+
+    - path: "./app/library2/Main.hs"
+      component: "NoviSteps4Q:exe:library2"
+
+    - path: "./app/library2/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:library2"
+
+    - path: "./app/makethemnarrow/Main.hs"
+      component: "NoviSteps4Q:exe:makethemnarrow"
+
+    - path: "./app/makethemnarrow/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:makethemnarrow"
+
+    - path: "./app/maxmex/Main.hs"
+      component: "NoviSteps4Q:exe:maxmex"
+
+    - path: "./app/maxmex/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:maxmex"
+
+    - path: "./app/minimumglutton/Main.hs"
+      component: "NoviSteps4Q:exe:minimumglutton"
+
+    - path: "./app/minimumglutton/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:minimumglutton"
+
+    - path: "./app/moveit/Main.hs"
+      component: "NoviSteps4Q:exe:moveit"
+
+    - path: "./app/moveit/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:moveit"
+
+    - path: "./app/party/Main.hs"
+      component: "NoviSteps4Q:exe:party"
+
+    - path: "./app/party/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:party"
+
+    - path: "./app/poster/Main.hs"
+      component: "NoviSteps4Q:exe:poster"
+
+    - path: "./app/poster/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:poster"
+
+    - path: "./app/product/Main.hs"
+      component: "NoviSteps4Q:exe:product"
+
+    - path: "./app/product/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:product"
+
+    - path: "./app/seats/Main.hs"
+      component: "NoviSteps4Q:exe:seats"
+
+    - path: "./app/seats/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:seats"
+
+    - path: "./app/secretnumber/Main.hs"
+      component: "NoviSteps4Q:exe:secretnumber"
+
+    - path: "./app/secretnumber/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:secretnumber"
+
+    - path: "./app/standings/Main.hs"
+      component: "NoviSteps4Q:exe:standings"
+
+    - path: "./app/standings/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:standings"
+
+    - path: "./app/travelingtakahashiproblem/Main.hs"
+      component: "NoviSteps4Q:exe:travelingtakahashiproblem"
+
+    - path: "./app/travelingtakahashiproblem/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:travelingtakahashiproblem"
+
+    - path: "./app/tripleatack/Main.hs"
+      component: "NoviSteps4Q:exe:tripleatack"
+
+    - path: "./app/tripleatack/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:tripleatack"
+
+    - path: "./app/unification/Main.hs"
+      component: "NoviSteps4Q:exe:unification"
+
+    - path: "./app/unification/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:unification"
 
     - path: "./app/worldladder/Main.hs"
       component: "NoviSteps4Q:exe:worldladder"

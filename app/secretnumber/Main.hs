@@ -33,22 +33,28 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
+type I = Char
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = [I] -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    s -> length us
+        where
+            ts = ['0' .. '9']
+            us = [ cs | a <- ts, b <- ts, c <- ts, d <- ts
+                            , let cs = [a,b,c,d]
+                            , all (`elem` cs) es 
+                            , all (`notElem` cs) ns]
+            es = intToDigit <$> elemIndices 'o' s
+            ns = intToDigit <$> elemIndices 'x' s
+
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    s:_ -> case f s of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

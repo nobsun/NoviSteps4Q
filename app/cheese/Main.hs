@@ -20,6 +20,7 @@ import Data.Bool
 import Data.Char
 import Data.Function
 import Data.List
+import Data.Tuple
 import Text.Printf
 
 import Data.IntMap qualified as IM
@@ -36,19 +37,21 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = (I,[(I,I)]) -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (w,bas) -> iter 0 w (sortBy (comparing Down) bas) where
+        iter a b = \ case
+            [] -> a
+            (x,y):rs
+                | b < y     -> a + x * b
+                | otherwise -> iter (a + x * y) (b - y) rs
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [_,w]:bas -> case f (w, toTuple <$> bas) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

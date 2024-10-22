@@ -36,19 +36,21 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = (I,[I],[I]) -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (n,as,ws) -> foldl' phi 0 $ filter ((1 <) . length) $ groupBy ((==) `on` fst) ais
+        where
+            ais = sortBy (comparing fst) $ zip as [1 ..]
+            wa  = listArray (1,n) ws
+            phi w = (w +) . cost 
+            cost = sum . tail . sortBy (comparing Down) . map ((wa !) . snd)
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n]:as:ws:_ -> case f (n,as,ws) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

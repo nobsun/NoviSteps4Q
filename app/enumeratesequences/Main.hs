@@ -36,19 +36,20 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = (I,[I]) -> [[O]]
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (k,r:rs) -> [ xys | x <- [1..r], ys <- yss, let xys = x:ys, sum xys `mod` k == 0 ]
+        where
+            yss = foldr phi [[]] rs
+                where
+                    phi s uss = [ t:us | t <- [1 .. s], us <- uss ]
+    _ -> invalid
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [_,k]:rs:_ -> f (k,rs)
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

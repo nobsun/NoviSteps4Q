@@ -36,19 +36,24 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = (I,I,[I],[I]) -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (x,y,as,bs) -> uncurry min 
+                 $ psi x *** psi y
+                 $ phi *** phi 
+                 $ (as, bs)
+        where
+            psi z zs = case spanCount (z >=) zs of
+                (c,[]) -> c
+                (c,_)  -> succ c 
+            phi = scanl1 (+) . sortBy (comparing Down)
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [_,x,y]:as:bs:_ -> case f (x,y,as,bs) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

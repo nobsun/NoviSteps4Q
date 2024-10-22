@@ -36,19 +36,29 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
+type Dom = ([(I,I)], [(I,I)])
+type Codom = (O,O)
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (as,bs) -> case dropWhile phi cs of
+        []      -> invalid
+        r:_     -> r
+        where
+            sb = S.fromList bs
+            bs' = S.toList sb
+            ma  = minimum as 
+            cs  = take (S.size sb - length as) $ map (sub ma) bs'
+            sub (x,y) (x',y') = (x' - x, y' - y)
+            add (x,y) (x',y') = (x' + x, y' + y)
+            phi (p,q) = any (flip S.notMember sb . add (p,q)) as
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [m]:dss -> case f $ second tail $ splitAt m (toTuple <$> dss) of
+            (x,y) -> [[x,y]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

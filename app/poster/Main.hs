@@ -33,22 +33,24 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
+type I = Char
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = ([[I]],[[I]]) -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (sss,tss) -> minimum $ zipWith (+) [0,1,2,1] $ map phi $ iterate cw sss where
+        phi     = sum . zipWith ((sum .) . zipWith psi) tss
+        psi x y = bool 0 1 (x /= y)
+
+cw :: [[a]] -> [[a]]
+cw = transpose . reverse
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    n:bss -> case f (splitAt (read n) bss) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

@@ -34,21 +34,18 @@ debug :: Bool
 debug = () /= ()
 
 type I = Int
-type O = Int
+type O = String
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = (I,I,I) -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (a,b,c) -> bool "NO" "YES" $ c `elem` map ((`mod` b) . (a *)) [0 .. pred b]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [a,b,c]:_ -> case f (a,b,c) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

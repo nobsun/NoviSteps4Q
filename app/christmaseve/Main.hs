@@ -36,19 +36,18 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = (I,I,[I]) -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (n,k,hs) -> minimum $ uncurry (zipWith subtract)
+            $ reverse . take (succ n - k) &&& take (succ n - k) . reverse
+            $ sort hs
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n,k]:hs -> case f (n,k,concat hs) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

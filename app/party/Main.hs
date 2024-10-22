@@ -36,19 +36,24 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = [(I,I)] -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    fss -> case partition ((1 ==) . fst) fss of
+        (as,bs) -> case S.fromList (snd <$> as) of
+            cs      -> S.size ds
+                where
+                    ds = foldl' phi cs bs
+                    phi s (i,j)
+                        | S.member i cs = S.insert j s
+                        | S.member j cs = S.insert i s
+                        | otherwise     = s
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:_:fss -> case f (toTuple <$> fss) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

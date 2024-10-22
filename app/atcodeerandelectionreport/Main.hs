@@ -36,19 +36,22 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = [(I,I)] -> O
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    tas -> uncurry (+) $ foldl' phi (1,1) tas where
+        phi (a, b) (a', b') = (a' * k, b' * k)
+            where
+                k = ceilingDiv a a' `max` ceilingDiv b b'
+
+ceilingDiv :: (Integral a) => a -> a -> a
+ceilingDiv x y = negate (negate x `div` y)
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:tas -> case f (toTuple <$> tas) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

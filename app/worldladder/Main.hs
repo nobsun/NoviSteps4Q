@@ -33,19 +33,29 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
-type O = Int
+type I = String
+type O = String
 
-type Solver = () -> ()
+type Solver = (I,I) -> ([O],Int)
 
 solve :: Solver
 solve = \ case
-    () -> ()
+    (s,t) -> (,) <*> length $ tail $ scanl phi s $ iter [] (zip3 [0::Int ..] s t)
+        where
+            iter bs = \ case
+                []         -> bs
+                (i,c,d):rs -> case compare c d of
+                    LT         -> iter ((i,d):bs) rs
+                    EQ         -> iter bs         rs
+                    GT         -> (i,d) : iter bs rs
+            phi p (i,d) = case splitAt i p of
+                (u,_:v) -> u++d:v
+                _       -> impossible
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f () of
-        _rr -> [[]]
+    [s]:[t]:_ -> case f (s,t) of
+        (x,l) -> [show l] : map (:[]) x
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
@@ -168,6 +178,13 @@ splitEvery k = \ case
     [] -> []
     xs -> case splitAt k xs of
         (ys,zs) -> ys : splitEvery k zs
+
+{- |
+>>> splice 5 ['a' .. 'j']
+["abcde","bcdef","cdefg","defgh","efghi","fghij"]
+-}
+splice :: Int -> [a] -> [[a]]
+splice n = (!! n) . transpose . map inits . tails
 
 {- |
 >>> subsegments "yay"

@@ -36,19 +36,34 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom = I
-type Codom = O
-
-type Solver = Dom -> Codom
+type Solver = [Pair I I] -> [O]
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    pps -> map snd $ sort $ zip pps [1..]
+
+data Pair a b = Pair a b
+
+toPair :: [a] -> Pair a a
+toPair = \ case
+    x:y:_ -> Pair x y
+    _     -> invalid
+
+instance (Num a, Eq a) => Eq (Pair a a) where
+    Pair a b == Pair c d = a * (c + d) == c * (a + b)
+
+instance (Num a, Eq a, Ord a) => Ord (Pair a a) where
+    compare (Pair a b) (Pair c d) = compare (c * (a + b)) (a * (c + d))
+
+{-
+   a / (a + b) < c / (c + d)
+   a * (c + d) < c * (a + b)
+-}
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:pss -> case f (toPair <$> pss) of
+        rr    -> [rr]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
