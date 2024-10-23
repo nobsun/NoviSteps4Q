@@ -36,19 +36,22 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = I
+type Dom   = [I]
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    as -> foldl' phi 0 $ runLength $ sort as where
+        phi a (_,m)
+            | m < 3     = a
+            | otherwise = a + m `nCr` 3
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:as:_ -> case f as of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
@@ -156,9 +159,6 @@ nCr n r
         iter p m = \ case
             q | q > r'    -> p
               | otherwise -> iter (p * m `div` q) (pred m) (succ q)
-
-nPr :: Integral a => a -> a -> a
-nPr n r = product (genericTake r [n, pred n .. 1])
 
 {- |
 >>> spanCount odd [3,1,4,1,5,9]

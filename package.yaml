@@ -130,6 +130,134 @@ library:
   source-dirs: src
 
 executables:
+  stonegames1:
+    main:               Main.hs
+    source-dirs:        app/stonegames1
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  poweroftwo:
+    main:               Main.hs
+    source-dirs:        app/poweroftwo
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  moveonsquares1:
+    main:               Main.hs
+    source-dirs:        app/moveonsquares1
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  travel1:
+    main:               Main.hs
+    source-dirs:        app/travel1
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  climbstairs:
+    main:               Main.hs
+    source-dirs:        app/climbstairs
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  ballsimulation:
+    main:               Main.hs
+    source-dirs:        app/ballsimulation
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  switchingligthts:
+    main:               Main.hs
+    source-dirs:        app/switchingligthts
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  priorityqueue:
+    main:               Main.hs
+    source-dirs:        app/priorityqueue
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  queue:
+    main:               Main.hs
+    source-dirs:        app/queue
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  stack:
+    main:               Main.hs
+    source-dirs:        app/stack
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  changeandreverse:
+    main:               Main.hs
+    source-dirs:        app/changeandreverse
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  triangle:
+    main:               Main.hs
+    source-dirs:        app/triangle
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  blackcompany1:
+    main:               Main.hs
+    source-dirs:        app/blackcompany1
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  travel2:
+    main:               Main.hs
+    source-dirs:        app/travel2
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  binarysearch1:
+    main:               Main.hs
+    source-dirs:        app/binarysearch1
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  maxsum:
+    main:               Main.hs
+    source-dirs:        app/maxsum
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   handsonring:
     main:               Main.hs
     source-dirs:        app/handsonring

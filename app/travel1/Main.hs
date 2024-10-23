@@ -36,19 +36,23 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = I
+type Dom   = (I,[I],[I])
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (n,as,bs) -> case listArray (1,n) (scanl' (+) 0 as) of
+        ca        -> iter ca 0 (zip bs (tail bs)) where
+            iter a d = \ case
+                [] -> d
+                (i,j):rs -> iter a (d+abs (a ! i - a ! j)) rs
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n]:as:_:bs -> case f (n, as, concat bs) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

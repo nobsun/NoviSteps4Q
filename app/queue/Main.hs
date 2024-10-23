@@ -26,6 +26,7 @@ import Data.IntMap qualified as IM
 import Data.IntSet qualified as IS
 import Data.Map qualified as M
 import Data.Set qualified as S
+import Data.Sequence qualified as Q
 import Data.Vector qualified as V
 
 import Debug.Trace qualified as Debug
@@ -33,22 +34,31 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
-type O = Int
+type I = B.ByteString
+type O = B.ByteString
 
-type Dom   = I
-type Codom = O
+type Dom   = [[I]]
+type Codom = [O]
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    qqs -> iter Q.empty qqs where
+        iter s = \ case
+            [] -> []
+            ["1", n]:qs -> iter (s Q.|> n) qs
+            ["2"]:qs    -> case Q.viewl s of
+                n Q.:< _    -> n : iter s qs
+                _           -> invalid
+            _:qs        -> case Q.viewl s of
+                _ Q.:< t    -> iter t qs
+                _           -> invalid
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:qqs -> case f qqs of
+        rr -> map (:[]) rr
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

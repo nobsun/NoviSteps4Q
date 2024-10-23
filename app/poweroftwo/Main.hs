@@ -43,12 +43,16 @@ type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    n -> case n `mod` 4 of
+        1 -> 2
+        2 -> 4
+        3 -> 8
+        _ -> 6
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n]:_ -> case f n of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

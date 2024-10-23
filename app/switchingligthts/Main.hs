@@ -33,22 +33,23 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
-type O = Int
+type I = String
+type O = String
 
-type Dom   = I
+type Dom   = (Int, I)
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (k,s) -> bool "No" "Yes" (even (m - k)) where
+        m = countif ('1' ==) s
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [_,k]:[s]:_ -> case f (read k, s) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

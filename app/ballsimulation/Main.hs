@@ -26,29 +26,35 @@ import Data.IntMap qualified as IM
 import Data.IntSet qualified as IS
 import Data.Map qualified as M
 import Data.Set qualified as S
+import Data.Sequence qualified as Q
 import Data.Vector qualified as V
 
 import Debug.Trace qualified as Debug
+import qualified Data.Array.Polarized.Push as Q
 
 debug :: Bool
 debug = () /= ()
 
-type I = Int
-type O = Int
+type I = String
+type O = String
 
-type Dom   = I
+type Dom   = (Int,I)
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (x,as) -> case splitAt (pred x) as of
+        (bs,_:cs) -> case spanCount ('.' ==) (reverse bs) of
+            (m,bs')   -> case spanCount ('.' ==) cs of
+                (n,cs') -> (reverse bs' ++)  . foldr1 (.) (replicate (m + succ n) ('@':)) $ cs'
+        _ -> invalid
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [_,x]:[as]:_ -> case f (read x,as) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

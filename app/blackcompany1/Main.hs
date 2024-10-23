@@ -36,19 +36,20 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = I
+type Dom   = (I,[(I,I,I)])
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (d,hs) -> sum $ elems $ accumArray min 24 (1,d) $ concatMap phi hs where
+        phi (l,r,h) = map (,h) [l .. r]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [d,_]:hs -> case f (d, toTriple <$> hs) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
@@ -75,10 +76,6 @@ instance InterfaceForOJS Int where
     readB = readInt
     showB = showInt
 
-instance InterfaceForOJS Integer where
-    readB = readInteger
-    showB = showInteger
-
 instance InterfaceForOJS String where
     readB = readStr
     showB = showStr
@@ -98,12 +95,6 @@ readInt = fst . fromJust . B.readInt
 
 showInt :: Int -> B.ByteString
 showInt = B.pack . show
-
-readInteger :: B.ByteString -> Integer
-readInteger = fst . fromJust . B.readInteger
-
-showInteger :: Integer -> B.ByteString
-showInteger = B.pack . show
 
 readStr :: B.ByteString -> String
 readStr = B.unpack
@@ -145,20 +136,6 @@ combinations = \ case
         []   -> []
         x:xs -> map (x:) (combinations n xs) ++ combinations (n+1) xs
     _ -> error "negative"
-
-nCr :: Integral a => a -> a -> a
-nCr n r
-    | n < 0  || r < 0  || n < r  = invalid
-    | n == 0 || r == 0 || n == r = 1
-    | otherwise                  = iter 1 n 1
-    where
-        r' = min r (n-r)
-        iter p m = \ case
-            q | q > r'    -> p
-              | otherwise -> iter (p * m `div` q) (pred m) (succ q)
-
-nPr :: Integral a => a -> a -> a
-nPr n r = product (genericTake r [n, pred n .. 1])
 
 {- |
 >>> spanCount odd [3,1,4,1,5,9]
@@ -234,6 +211,11 @@ toTuple = \ case
 
 fromTuple :: (a,a) -> [a]
 fromTuple (x,y) = [x,y]
+
+toTriple :: [a] -> (a,a,a)
+toTriple = \ case
+    x:y:z:_ -> (x,y,z)
+    _       -> invalid
 
 countif :: (a -> Bool) -> [a] -> Int
 countif = iter 0

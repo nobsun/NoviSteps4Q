@@ -34,7 +34,7 @@ debug :: Bool
 debug = () /= ()
 
 type I = Int
-type O = Int
+type O = String
 
 type Dom   = I
 type Codom = O
@@ -43,12 +43,12 @@ type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
-
+    n -> bool "First" "Second" (n `mod` 4 == 0)
+            
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n]:_ -> case f n of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
