@@ -130,6 +130,14 @@ library:
   source-dirs: src
 
 executables:
+  maximalvalue:
+    main:               Main.hs
+    source-dirs:        app/maximalvalue
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   stonegames1:
     main:               Main.hs
     source-dirs:        app/stonegames1

@@ -165,6 +165,12 @@ cradle:
     - path: "./app/makethemnarrow/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:makethemnarrow"
 
+    - path: "./app/maximalvalue/Main.hs"
+      component: "NoviSteps4Q:exe:maximalvalue"
+
+    - path: "./app/maximalvalue/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:maximalvalue"
+
     - path: "./app/maxmex/Main.hs"
       component: "NoviSteps4Q:exe:maxmex"
 
