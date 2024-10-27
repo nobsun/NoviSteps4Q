@@ -45,6 +45,12 @@ cradle:
     - path: "./app/ballsimulation/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:ballsimulation"
 
+    - path: "./app/bbqeasy/Main.hs"
+      component: "NoviSteps4Q:exe:bbqeasy"
+
+    - path: "./app/bbqeasy/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:bbqeasy"
+
     - path: "./app/binarysearch1/Main.hs"
       component: "NoviSteps4Q:exe:binarysearch1"
 
@@ -104,6 +110,12 @@ cradle:
 
     - path: "./app/climbstairs/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:climbstairs"
+
+    - path: "./app/colorfulsmiles2/Main.hs"
+      component: "NoviSteps4Q:exe:colorfulsmiles2"
+
+    - path: "./app/colorfulsmiles2/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:colorfulsmiles2"
 
     - path: "./app/dance/Main.hs"
       component: "NoviSteps4Q:exe:dance"
@@ -266,6 +278,12 @@ cradle:
 
     - path: "./app/stonegames1/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:stonegames1"
+
+    - path: "./app/streamline/Main.hs"
+      component: "NoviSteps4Q:exe:streamline"
+
+    - path: "./app/streamline/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:streamline"
 
     - path: "./app/switchingligthts/Main.hs"
       component: "NoviSteps4Q:exe:switchingligthts"

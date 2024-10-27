@@ -130,6 +130,30 @@ library:
   source-dirs: src
 
 executables:
+  streamline:
+    main:               Main.hs
+    source-dirs:        app/streamline
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  colorfulsmiles2:
+    main:               Main.hs
+    source-dirs:        app/colorfulsmiles2
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  bbqeasy:
+    main:               Main.hs
+    source-dirs:        app/bbqeasy
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   maximalvalue:
     main:               Main.hs
     source-dirs:        app/maximalvalue
