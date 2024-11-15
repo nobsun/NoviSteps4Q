@@ -33,22 +33,37 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
-type O = Int
+type I = String
+type O = String
 
-type Dom   = I
+type Dom   = (Int,[I])
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (k,ss) -> case sortBy (comparing (Down . snd)) $ runLength $ sort ss of
+        ts | k == 1   -> case take 2 ts of
+            []                     -> "AMBIGUOUS"
+            [(v,x)]                -> v
+            [(v,x),(w,y)]
+                | x == y           -> "AMBIGUOUS"
+                | otherwise        -> v
+           | otherwise -> case take 3 (drop (k - 2) ts) of
+            []  -> "AMBIGUOUS"
+            [_] -> "AMBIGUOUS"
+            [(v,x),(w,y)]
+                | x == y           -> "AMBIGUOUS"
+                | otherwise        -> w
+            [(v,x),(w,y),(_,z)]
+                | x == y || y == z -> "AMBIGUOUS"
+                | otherwise        -> w
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [_,k]:ss -> case f (read k,concat ss) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

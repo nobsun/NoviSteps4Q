@@ -36,19 +36,21 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = I
+type Dom   = [I]
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
-
+    as -> maximum $ elems $ accumArray (+) 0 (-1,100000) $ concatMap phi as
+            where
+                phi a = [(pred a, 1), (a, 1), (succ a, 1)]
+    
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:as:_ -> case f as of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

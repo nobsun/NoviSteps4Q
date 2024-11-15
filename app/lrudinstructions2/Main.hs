@@ -31,10 +31,10 @@ import Data.Vector qualified as V
 import Debug.Trace qualified as Debug
 
 debug :: Bool
-debug = () /= ()
+debug = () == ()
 
-type I = Int
-type O = Int
+type I = String
+type O = String
 
 type Dom   = I
 type Codom = O
@@ -43,12 +43,24 @@ type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
-
+    s -> iter (S.singleton o) o s
+    where
+        o = (0,0) :: (Int,Int)
+        iter ss (x,y) = \ case
+            []   -> "No"
+            c:cs ->  if S.member (x',y') ss then "Yes" else iter ss' (x',y') cs
+                where
+                    (x',y') = case c of
+                        'L' -> (pred x,y)
+                        'R' -> (succ x,y)
+                        'U' -> (x,succ y)
+                        _   -> (x,pred y)
+                    ss' = S.insert (x',y') ss
+    
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:[s]:_ -> case f s of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

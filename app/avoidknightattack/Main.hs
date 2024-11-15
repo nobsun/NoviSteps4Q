@@ -36,19 +36,26 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = I
+type Dom   = (I,[(I,I)])
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (n,aas) -> n*n - S.size (S.filter phi $ S.fromList $ concatMap psi aas) where
+            phi (i,j) = and [ 0 < i, i <= n, 0 < j, j <= n]
+            psi (i,j) = [(i,j)
+                        ,(i+2,j+1),(i+1,j+2)
+                        ,(i+2,j-1),(i+1,j-2)
+                        ,(i-2,j+1),(i-1,j+2)
+                        ,(i-2,j-1),(i-1,j-2)
+                        ]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n,_]:aas -> case f (n, toTuple <$> aas) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
@@ -133,15 +140,6 @@ impossible = error "impossible"
 
 invalid :: a
 invalid = error "invalid input"
-
-{- | 切り上げ除算
->>> 7 `ceilingDiv` 3
-3
->>> 6 `ceilingDiv` 3
-2
--}
-ceilingDiv :: Integral a => a -> a -> a
-ceilingDiv x y = negate $ negate x `div` y
 
 {- |
 >>> combinations 2 "abcd"

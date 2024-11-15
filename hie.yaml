@@ -33,6 +33,12 @@ cradle:
     - path: "./app/atcodeerandelectionreport/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:atcodeerandelectionreport"
 
+    - path: "./app/avoidknightattack/Main.hs"
+      component: "NoviSteps4Q:exe:avoidknightattack"
+
+    - path: "./app/avoidknightattack/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:avoidknightattack"
+
     - path: "./app/ballsandbagquery/Main.hs"
       component: "NoviSteps4Q:exe:ballsandbagquery"
 
@@ -129,17 +135,35 @@ cradle:
     - path: "./app/enumeratesequences/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:enumeratesequences"
 
+    - path: "./app/ff/Main.hs"
+      component: "NoviSteps4Q:exe:ff"
+
+    - path: "./app/ff/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:ff"
+
     - path: "./app/findseiza/Main.hs"
       component: "NoviSteps4Q:exe:findseiza"
 
     - path: "./app/findseiza/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:findseiza"
 
+    - path: "./app/fivetransportations/Main.hs"
+      component: "NoviSteps4Q:exe:fivetransportations"
+
+    - path: "./app/fivetransportations/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:fivetransportations"
+
     - path: "./app/gohome/Main.hs"
       component: "NoviSteps4Q:exe:gohome"
 
     - path: "./app/gohome/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:gohome"
+
+    - path: "./app/greenbin/Main.hs"
+      component: "NoviSteps4Q:exe:greenbin"
+
+    - path: "./app/greenbin/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:greenbin"
 
     - path: "./app/handsonring/Main.hs"
       component: "NoviSteps4Q:exe:handsonring"
@@ -170,6 +194,12 @@ cradle:
 
     - path: "./app/library2/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:library2"
+
+    - path: "./app/lrudinstructions2/Main.hs"
+      component: "NoviSteps4Q:exe:lrudinstructions2"
+
+    - path: "./app/lrudinstructions2/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:lrudinstructions2"
 
     - path: "./app/makethemnarrow/Main.hs"
       component: "NoviSteps4Q:exe:makethemnarrow"
@@ -219,6 +249,18 @@ cradle:
     - path: "./app/party/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:party"
 
+    - path: "./app/past202010openf/Main.hs"
+      component: "NoviSteps4Q:exe:past202010openf"
+
+    - path: "./app/past202010openf/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:past202010openf"
+
+    - path: "./app/poemonlinejudge/Main.hs"
+      component: "NoviSteps4Q:exe:poemonlinejudge"
+
+    - path: "./app/poemonlinejudge/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:poemonlinejudge"
+
     - path: "./app/poster/Main.hs"
       component: "NoviSteps4Q:exe:poster"
 
@@ -237,6 +279,12 @@ cradle:
     - path: "./app/priorityqueue/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:priorityqueue"
 
+    - path: "./app/problemset/Main.hs"
+      component: "NoviSteps4Q:exe:problemset"
+
+    - path: "./app/problemset/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:problemset"
+
     - path: "./app/product/Main.hs"
       component: "NoviSteps4Q:exe:product"
 
@@ -248,6 +296,12 @@ cradle:
 
     - path: "./app/queue/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:queue"
+
+    - path: "./app/queue0/Main.hs"
+      component: "NoviSteps4Q:exe:queue0"
+
+    - path: "./app/queue0/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:queue0"
 
     - path: "./app/seats/Main.hs"
       component: "NoviSteps4Q:exe:seats"
@@ -290,6 +344,18 @@ cradle:
 
     - path: "./app/switchingligthts/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:switchingligthts"
+
+    - path: "./app/thekthtimequery/Main.hs"
+      component: "NoviSteps4Q:exe:thekthtimequery"
+
+    - path: "./app/thekthtimequery/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:thekthtimequery"
+
+    - path: "./app/together/Main.hs"
+      component: "NoviSteps4Q:exe:together"
+
+    - path: "./app/together/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:together"
 
     - path: "./app/travel1/Main.hs"
       component: "NoviSteps4Q:exe:travel1"

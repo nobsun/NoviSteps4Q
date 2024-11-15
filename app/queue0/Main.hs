@@ -27,6 +27,7 @@ import Data.IntSet qualified as IS
 import Data.Map qualified as M
 import Data.Set qualified as S
 import Data.Vector qualified as V
+import Data.Sequence qualified as Q
 
 import Debug.Trace qualified as Debug
 
@@ -36,19 +37,27 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = I
-type Codom = O
+type Dom   = (I,[[I]])
+type Codom = [O]
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (n,qqs) -> catMaybes $ snd $ mapAccumL phi m0 qqs where
+        m0 = M.fromList $ zip [0::Int ..] (replicate n Q.empty)
+        phi m = \ case
+            [0,t,x] -> (M.update (Just . (Q.|> x)) t m, Nothing)
+            [1,t]   -> (m, (m M.! t) Q.!? 0)
+            [2,t]   -> (m', Nothing)
+                where
+                    m' = M.update (Just . Q.drop 1) t m
+            _ -> invalid
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n,_]:qqs -> case f (n,qqs) of
+        rr -> map (:[]) rr
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

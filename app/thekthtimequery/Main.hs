@@ -27,6 +27,7 @@ import Data.IntSet qualified as IS
 import Data.Map qualified as M
 import Data.Set qualified as S
 import Data.Vector qualified as V
+import Data.List.Extra
 
 import Debug.Trace qualified as Debug
 
@@ -36,19 +37,29 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = I
-type Codom = O
+type Dom   = ([I],[[I]])
+type Codom = [O]
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (as,qqs) -> map phi qqs
+        where
+            phi = \ case
+                [x,k] -> maybe -1 xi (ms M.!? x)
+                    where
+                        xi = fromMaybe -1 . M.lookup k
+                _     -> invalid
+            !ms = xi <$> foldr psi M.empty (zip as [1..])
+                where
+                    psi (k,i) = M.insertWith (++) k [i]
+                    xi = M.fromList . zip [1 ..]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:as:qqs -> case f (as,qqs) of
+        rr -> map (:[]) rr
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

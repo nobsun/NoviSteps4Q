@@ -33,23 +33,32 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
+type I = String
 type O = Int
 
-type Dom   = I
+type Dom   = [(I,Int)]
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    sts -> case catMaybes $ snd $ mapAccumL phi S.empty (zip sts [1 ..]) of
+        as -> minimum $ map snd $ head $ groupBy ((==) `on` (snd . fst)) $ sortBy (comparing (Down . snd . fst)) as
+        where
+            phi ss = \ case
+                ((s,t),i) | S.member s ss -> (ss, Nothing)
+                          | otherwise     -> (S.insert s ss, Just ((s,t), i))
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:sts -> case f (conv <$> sts) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
+    where
+        conv = \ case
+            [s,t] -> (s,read t)
+            _      -> invalid
 
 main :: IO ()
 main = B.interact (encode . wrap solve . decode)

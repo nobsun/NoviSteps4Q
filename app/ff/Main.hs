@@ -34,22 +34,35 @@ debug :: Bool
 debug = () /= ()
 
 type I = Int
-type O = Int
+type O = String
 
-type Dom   = I
-type Codom = O
+type Dom   = [(I,(I,I))]
+type Codom = [O]
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    tabs -> catMaybes $ snd $ mapAccumL phi S.empty tabs
+        where
+            phi m = \ case
+                (1,(a,b)) -> (follow a b m, Nothing)
+                (2,(a,b)) -> (unfollow a b m, Nothing)
+                (3,(a,b)) -> (m, Just (msg a b m))
+                _         -> invalid
+            follow x y   = S.insert (x,y)
+            unfollow x y = S.delete (x,y)
+            msg x y n    = bool "No" "Yes" (S.member (x,y) n && S.member (y,x) n)
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:tabs -> case f (conv <$> tabs) of
+        rr -> (:[]) <$> rr
     _   -> error "wrap: invalid input format"
+    where
+        conv = \ case
+            [t,a,b] -> (t,(a,b))
+            _       -> invalid
 
 main :: IO ()
 main = B.interact (encode . wrap solve . decode)

@@ -130,6 +130,94 @@ library:
   source-dirs: src
 
 executables:
+  lrudinstructions2:
+    main:               Main.hs
+    source-dirs:        app/lrudinstructions2
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  ff:
+    main:               Main.hs
+    source-dirs:        app/ff
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  poemonlinejudge:
+    main:               Main.hs
+    source-dirs:        app/poemonlinejudge
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  thekthtimequery:
+    main:               Main.hs
+    source-dirs:        app/thekthtimequery
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  greenbin:
+    main:               Main.hs
+    source-dirs:        app/greenbin
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  past202010openf:
+    main:               Main.hs
+    source-dirs:        app/past202010openf
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  queue0:
+    main:               Main.hs
+    source-dirs:        app/queue0
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  together:
+    main:               Main.hs
+    source-dirs:        app/together
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  problemset:
+    main:               Main.hs
+    source-dirs:        app/problemset
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  fivetransportations:
+    main:               Main.hs
+    source-dirs:        app/fivetransportations
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  avoidknightattack:
+    main:               Main.hs
+    source-dirs:        app/avoidknightattack
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   streamline:
     main:               Main.hs
     source-dirs:        app/streamline

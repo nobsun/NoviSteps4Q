@@ -36,19 +36,19 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = I
+type Dom   = (I,[I])
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (n,ts) ->  4 + n `ceilingDiv` minimum ts
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n]:ts -> case f (n, concat ts) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
