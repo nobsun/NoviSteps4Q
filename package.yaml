@@ -130,6 +130,14 @@ library:
   source-dirs: src
 
 executables:
+  enumerationofsubsets1:
+    main:               Main.hs
+    source-dirs:        app/enumerationofsubsets1
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   lrudinstructions2:
     main:               Main.hs
     source-dirs:        app/lrudinstructions2

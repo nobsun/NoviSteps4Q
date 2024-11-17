@@ -135,6 +135,12 @@ cradle:
     - path: "./app/enumeratesequences/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:enumeratesequences"
 
+    - path: "./app/enumerationofsubsets1/Main.hs"
+      component: "NoviSteps4Q:exe:enumerationofsubsets1"
+
+    - path: "./app/enumerationofsubsets1/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:enumerationofsubsets1"
+
     - path: "./app/ff/Main.hs"
       component: "NoviSteps4Q:exe:ff"
 
