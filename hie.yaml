@@ -309,6 +309,12 @@ cradle:
     - path: "./app/queue0/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:queue0"
 
+    - path: "./app/replacing/Main.hs"
+      component: "NoviSteps4Q:exe:replacing"
+
+    - path: "./app/replacing/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:replacing"
+
     - path: "./app/seats/Main.hs"
       component: "NoviSteps4Q:exe:seats"
 
@@ -404,6 +410,12 @@ cradle:
 
     - path: "./app/worldladder/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:worldladder"
+
+    - path: "./app/writeanderase/Main.hs"
+      component: "NoviSteps4Q:exe:writeanderase"
+
+    - path: "./app/writeanderase/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:writeanderase"
 
     - path: "./test"
       component: "NoviSteps4Q:test:NoviSteps4Q-doctest"

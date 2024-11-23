@@ -130,6 +130,22 @@ library:
   source-dirs: src
 
 executables:
+  replacing:
+    main:               Main.hs
+    source-dirs:        app/replacing
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  writeanderase:
+    main:               Main.hs
+    source-dirs:        app/writeanderase
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   enumerationofsubsets1:
     main:               Main.hs
     source-dirs:        app/enumerationofsubsets1
