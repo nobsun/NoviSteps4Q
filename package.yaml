@@ -130,6 +130,14 @@ library:
   source-dirs: src
 
 executables:
+  11_22substring:
+    main:               Main.hs
+    source-dirs:        app/11_22substring
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   replacing:
     main:               Main.hs
     source-dirs:        app/replacing

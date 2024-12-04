@@ -3,6 +3,12 @@ cradle:
     - path: "./src"
       component: "NoviSteps4Q:lib"
 
+    - path: "./app/11_22substring/Main.hs"
+      component: "NoviSteps4Q:exe:11_22substring"
+
+    - path: "./app/11_22substring/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:11_22substring"
+
     - path: "./app/1dreversi/Main.hs"
       component: "NoviSteps4Q:exe:1dreversi"
 
