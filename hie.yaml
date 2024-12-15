@@ -75,6 +75,12 @@ cradle:
     - path: "./app/blackcompany1/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:blackcompany1"
 
+    - path: "./app/bruteforceattack/Main.hs"
+      component: "NoviSteps4Q:exe:bruteforceattack"
+
+    - path: "./app/bruteforceattack/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:bruteforceattack"
+
     - path: "./app/brutmphyhiizp/Main.hs"
       component: "NoviSteps4Q:exe:brutmphyhiizp"
 
@@ -135,6 +141,18 @@ cradle:
     - path: "./app/dance/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:dance"
 
+    - path: "./app/dango/Main.hs"
+      component: "NoviSteps4Q:exe:dango"
+
+    - path: "./app/dango/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:dango"
+
+    - path: "./app/doublecamelcasesort/Main.hs"
+      component: "NoviSteps4Q:exe:doublecamelcasesort"
+
+    - path: "./app/doublecamelcasesort/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:doublecamelcasesort"
+
     - path: "./app/enumeratesequences/Main.hs"
       component: "NoviSteps4Q:exe:enumeratesequences"
 
@@ -183,6 +201,12 @@ cradle:
     - path: "./app/handsonring/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:handsonring"
 
+    - path: "./app/humidifier2/Main.hs"
+      component: "NoviSteps4Q:exe:humidifier2"
+
+    - path: "./app/humidifier2/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:humidifier2"
+
     - path: "./app/intersectionofcuboids/Main.hs"
       component: "NoviSteps4Q:exe:intersectionofcuboids"
 
@@ -194,6 +218,12 @@ cradle:
 
     - path: "./app/irohalovesstringabc/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:irohalovesstringabc"
+
+    - path: "./app/jjooii/Main.hs"
+      component: "NoviSteps4Q:exe:jjooii"
+
+    - path: "./app/jjooii/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:jjooii"
 
     - path: "./app/judge-hs/Main.hs"
       component: "NoviSteps4Q:exe:judge-hs"

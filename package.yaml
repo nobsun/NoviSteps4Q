@@ -130,6 +130,46 @@ library:
   source-dirs: src
 
 executables:
+  humidifier2:
+    main:               Main.hs
+    source-dirs:        app/humidifier2
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  dango:
+    main:               Main.hs
+    source-dirs:        app/dango
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  bruteforceattack:
+    main:               Main.hs
+    source-dirs:        app/bruteforceattack
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  doublecamelcasesort:
+    main:               Main.hs
+    source-dirs:        app/doublecamelcasesort
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  jjooii:
+    main:               Main.hs
+    source-dirs:        app/jjooii
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   11_22substring:
     main:               Main.hs
     source-dirs:        app/11_22substring
