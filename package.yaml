@@ -130,6 +130,30 @@ library:
   source-dirs: src
 
 executables:
+  monotonicallyincreasing:
+    main:               Main.hs
+    source-dirs:        app/monotonicallyincreasing
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  caracalvsmonster:
+    main:               Main.hs
+    source-dirs:        app/caracalvsmonster
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  removeonecharacter:
+    main:               Main.hs
+    source-dirs:        app/removeonecharacter
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   humidifier2:
     main:               Main.hs
     source-dirs:        app/humidifier2

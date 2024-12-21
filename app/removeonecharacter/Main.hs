@@ -33,7 +33,7 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
+type I = String
 type O = Int
 
 type Dom   = I
@@ -43,12 +43,12 @@ type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    s -> sum $ map ((`nCr` 2) . snd) $ runLength s
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:[s]:_ -> case f s of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

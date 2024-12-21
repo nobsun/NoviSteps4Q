@@ -43,12 +43,12 @@ type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    h -> pred $ (2^) $ length (printf "%b" h :: String)
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [h]:_ -> case f h of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
