@@ -34,21 +34,26 @@ debug :: Bool
 debug = () /= ()
 
 type I = Int
-type O = Int
+type O = String
 
-type Dom   = I
+type Dom   = (I,[I])
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (n,as) -> case partition even as of
+        (bs,cs) -> bool p "Yes" $ c4  >= co
+            where
+                p = bool "No" "Yes" (c4 == pred co && n == c4 + co)
+                c4 = countif ((0 ==) . (`mod` 4)) bs
+                co = length cs
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n]:as:_ -> case f (n,as) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
@@ -249,48 +254,3 @@ countif = iter 0
     where
         iter a p (x:xs) = iter (bool a (succ a) (p x)) p xs
         iter a _ []     = a
-
-{- Sized List -}
-data SzL a = SzL Int [a] deriving Eq
-
-instance Ord a => Ord (SzL a) where
-    compare :: Ord a => SzL a -> SzL a -> Ordering
-    compare (SzL m xs) (SzL n ys) = case compare m n of
-        EQ -> compare xs ys
-        o  -> o
-
-nilsz :: SzL a
-nilsz = SzL 0 []
-
-consz :: a -> SzL a -> SzL a
-consz x (SzL m xs) = SzL (succ m) (x:xs)
-
-singletonsz :: a -> SzL a
-singletonsz = SzL 1 . singleton
-
-szl :: b -> (a -> SzL a -> b) -> SzL a -> b
-szl e f = \ case
-    SzL _ []     -> e
-    SzL m (x:xs) -> f x (SzL (pred m) xs)
-
-append :: SzL a -> SzL a -> SzL a
-append (SzL m xs) (SzL n ys) = SzL (m+n) (xs++ys)
-
-joinsz :: SzL (SzL a) -> SzL a
-joinsz = \ case
-    SzL _ [] -> SzL 0 []
-    SzL _ (sz:szs) -> append sz (foldr append nilsz szs)
-
-instance Functor SzL where
-    fmap :: (a -> b) -> SzL a -> SzL b
-    fmap f (SzL m xs) = SzL m (f <$> xs)
-
-instance Applicative SzL where
-    pure :: a -> SzL a
-    pure = singletonsz
-    (<*>) :: SzL (a -> b) -> SzL a -> SzL b
-    SzL m fs <*> SzL n xs = SzL (m*n) [f x | f <- fs, x <- xs]
-
-instance Monad SzL where
-    (>>=) :: SzL a -> (a -> SzL b) -> SzL b
-    m >>= f = joinsz (f <$> m)

@@ -130,6 +130,54 @@ library:
   source-dirs: src
 
 executables:
+  variouskagamimochi:
+    main:               Main.hs
+    source-dirs:        app/variouskagamimochi
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  operate1:
+    main:               Main.hs
+    source-dirs:        app/operate1
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  multipleclocks:
+    main:               Main.hs
+    source-dirs:        app/multipleclocks
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  4adjacent:
+    main:               Main.hs
+    source-dirs:        app/4adjacent
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  pushpush:
+    main:               Main.hs
+    source-dirs:        app/pushpush
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  bugged:
+    main:               Main.hs
+    source-dirs:        app/bugged
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   monotonicallyincreasing:
     main:               Main.hs
     source-dirs:        app/monotonicallyincreasing

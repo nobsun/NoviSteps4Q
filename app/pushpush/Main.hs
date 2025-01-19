@@ -36,19 +36,30 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = I
-type Codom = O
+type Dom   = [I]
+type Codom = [O]
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    as -> iter [] [] as where
+        iter ps qs = \ case
+            []   -> qs ++ reverse ps
+            b:bs -> iter qs (b:ps) bs
+{-
+[]
+[1]
+[2,1]
+[3,1,2]
+[4,2,1,3]
+[5,3,1,2,4]
+-}
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:as:_ -> case f as of
+        rr -> [rr]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
@@ -217,7 +228,7 @@ splice n = (!! n) . transpose . map inits . tails
 [["y","a","y"],["ya","ay"],["yay"]]
 -}
 subsegments :: [a] -> [[[a]]]
-subsegments = drop 1 . transpose . map inits . transpose . tails 
+subsegments = tail . transpose . map inits . transpose . tails 
 
 {- |
 >>> mex [8,23,9,0,12,11,1,10,13,7,41,4,14,21,5,17,3,19,2,6]
@@ -249,48 +260,3 @@ countif = iter 0
     where
         iter a p (x:xs) = iter (bool a (succ a) (p x)) p xs
         iter a _ []     = a
-
-{- Sized List -}
-data SzL a = SzL Int [a] deriving Eq
-
-instance Ord a => Ord (SzL a) where
-    compare :: Ord a => SzL a -> SzL a -> Ordering
-    compare (SzL m xs) (SzL n ys) = case compare m n of
-        EQ -> compare xs ys
-        o  -> o
-
-nilsz :: SzL a
-nilsz = SzL 0 []
-
-consz :: a -> SzL a -> SzL a
-consz x (SzL m xs) = SzL (succ m) (x:xs)
-
-singletonsz :: a -> SzL a
-singletonsz = SzL 1 . singleton
-
-szl :: b -> (a -> SzL a -> b) -> SzL a -> b
-szl e f = \ case
-    SzL _ []     -> e
-    SzL m (x:xs) -> f x (SzL (pred m) xs)
-
-append :: SzL a -> SzL a -> SzL a
-append (SzL m xs) (SzL n ys) = SzL (m+n) (xs++ys)
-
-joinsz :: SzL (SzL a) -> SzL a
-joinsz = \ case
-    SzL _ [] -> SzL 0 []
-    SzL _ (sz:szs) -> append sz (foldr append nilsz szs)
-
-instance Functor SzL where
-    fmap :: (a -> b) -> SzL a -> SzL b
-    fmap f (SzL m xs) = SzL m (f <$> xs)
-
-instance Applicative SzL where
-    pure :: a -> SzL a
-    pure = singletonsz
-    (<*>) :: SzL (a -> b) -> SzL a -> SzL b
-    SzL m fs <*> SzL n xs = SzL (m*n) [f x | f <- fs, x <- xs]
-
-instance Monad SzL where
-    (>>=) :: SzL a -> (a -> SzL b) -> SzL b
-    m >>= f = joinsz (f <$> m)

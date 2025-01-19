@@ -15,6 +15,12 @@ cradle:
     - path: "./app/1dreversi/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:1dreversi"
 
+    - path: "./app/4adjacent/Main.hs"
+      component: "NoviSteps4Q:exe:4adjacent"
+
+    - path: "./app/4adjacent/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:4adjacent"
+
     - path: "./app/5qsentou/Main.hs"
       component: "NoviSteps4Q:exe:5qsentou"
 
@@ -86,6 +92,12 @@ cradle:
 
     - path: "./app/brutmphyhiizp/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:brutmphyhiizp"
+
+    - path: "./app/bugged/Main.hs"
+      component: "NoviSteps4Q:exe:bugged"
+
+    - path: "./app/bugged/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:bugged"
 
     - path: "./app/candybutton/Main.hs"
       component: "NoviSteps4Q:exe:candybutton"
@@ -297,6 +309,18 @@ cradle:
     - path: "./app/moveonsquares1/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:moveonsquares1"
 
+    - path: "./app/multipleclocks/Main.hs"
+      component: "NoviSteps4Q:exe:multipleclocks"
+
+    - path: "./app/multipleclocks/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:multipleclocks"
+
+    - path: "./app/operate1/Main.hs"
+      component: "NoviSteps4Q:exe:operate1"
+
+    - path: "./app/operate1/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:operate1"
+
     - path: "./app/party/Main.hs"
       component: "NoviSteps4Q:exe:party"
 
@@ -344,6 +368,12 @@ cradle:
 
     - path: "./app/product/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:product"
+
+    - path: "./app/pushpush/Main.hs"
+      component: "NoviSteps4Q:exe:pushpush"
+
+    - path: "./app/pushpush/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:pushpush"
 
     - path: "./app/queue/Main.hs"
       component: "NoviSteps4Q:exe:queue"
@@ -458,6 +488,12 @@ cradle:
 
     - path: "./app/unification/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:unification"
+
+    - path: "./app/variouskagamimochi/Main.hs"
+      component: "NoviSteps4Q:exe:variouskagamimochi"
+
+    - path: "./app/variouskagamimochi/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:variouskagamimochi"
 
     - path: "./app/worldladder/Main.hs"
       component: "NoviSteps4Q:exe:worldladder"

@@ -31,24 +31,35 @@ import Data.Vector qualified as V
 import Debug.Trace qualified as Debug
 
 debug :: Bool
-debug = () /= ()
+debug = () == ()
 
 type I = Int
 type O = Int
 
-type Dom   = I
+type Dom   = (I,[I])
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (n,as) -> sum $ size . snd <$> cmb (drop 1 as) (SzL n as)
+
+cmb :: [Int] -> SzL Int -> [(Int, SzL Int)]
+cmb (y:ys) = \ case
+    SzL 0 _             -> []
+    SzL 1 _             -> []
+    SzL m (x:xs) -> case spanCount (2 * x >) xs of
+        (_,[]) -> []
+        (n,zs) -> (x, SzL (m-n-1) zs) : cmb ys (SzL (m-n) (y:zs))
+    _ -> impossible
+cmb [] = const []
+
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [n]:as:_ -> case f (n,as) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
@@ -251,7 +262,11 @@ countif = iter 0
         iter a _ []     = a
 
 {- Sized List -}
-data SzL a = SzL Int [a] deriving Eq
+data SzL a = SzL Int [a] 
+    deriving (Eq, Show)
+
+size :: SzL a -> Int
+size (SzL m _) = m
 
 instance Ord a => Ord (SzL a) where
     compare :: Ord a => SzL a -> SzL a -> Ordering
@@ -294,3 +309,4 @@ instance Applicative SzL where
 instance Monad SzL where
     (>>=) :: SzL a -> (a -> SzL b) -> SzL b
     m >>= f = joinsz (f <$> m)
+
