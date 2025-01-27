@@ -165,11 +165,23 @@ cradle:
     - path: "./app/dango/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:dango"
 
+    - path: "./app/derangement/Main.hs"
+      component: "NoviSteps4Q:exe:derangement"
+
+    - path: "./app/derangement/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:derangement"
+
     - path: "./app/doublecamelcasesort/Main.hs"
       component: "NoviSteps4Q:exe:doublecamelcasesort"
 
     - path: "./app/doublecamelcasesort/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:doublecamelcasesort"
+
+    - path: "./app/dubiousdocument2/Main.hs"
+      component: "NoviSteps4Q:exe:dubiousdocument2"
+
+    - path: "./app/dubiousdocument2/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:dubiousdocument2"
 
     - path: "./app/enumeratesequences/Main.hs"
       component: "NoviSteps4Q:exe:enumeratesequences"
@@ -261,6 +273,12 @@ cradle:
     - path: "./app/lrudinstructions2/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:lrudinstructions2"
 
+    - path: "./app/makearectangle/Main.hs"
+      component: "NoviSteps4Q:exe:makearectangle"
+
+    - path: "./app/makearectangle/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:makearectangle"
+
     - path: "./app/makethemnarrow/Main.hs"
       component: "NoviSteps4Q:exe:makethemnarrow"
 
@@ -320,6 +338,12 @@ cradle:
 
     - path: "./app/operate1/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:operate1"
+
+    - path: "./app/painttomakearectangle/Main.hs"
+      component: "NoviSteps4Q:exe:painttomakearectangle"
+
+    - path: "./app/painttomakearectangle/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:painttomakearectangle"
 
     - path: "./app/party/Main.hs"
       component: "NoviSteps4Q:exe:party"

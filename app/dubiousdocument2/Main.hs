@@ -33,22 +33,37 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
-type O = Int
+type I = B.ByteString
+type O = B.ByteString
 
-type Dom   = I
+type Dom   = (I,I)
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (s',t) -> case takeWhile ((tl <=) . B.length . snd) $ zip (B.inits s') (B.tails s') of
+        ds -> case mapMaybe (phi' t) (tracing ds) of
+            [] -> "UNRESTORABLE"
+            xs -> minimum xs
+        where
+            tl = B.length t
+
+phi' :: B.ByteString -> (B.ByteString, B.ByteString) -> Maybe B.ByteString
+phi' t (as,bs) 
+    | and (B.zipWith p bs t) = Just (B.map psi (as `mappend` t `mappend` B.drop (B.length t) bs))
+    | otherwise              = Nothing
+    where
+        psi '?' = 'a'
+        psi c   = c
+        p '?' _ = True
+        p c1 c2 = c1 == c2
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    [s']:[t]:_ -> case f (s',t) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()

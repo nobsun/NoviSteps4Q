@@ -130,6 +130,38 @@ library:
   source-dirs: src
 
 executables:
+  painttomakearectangle:
+    main:               Main.hs
+    source-dirs:        app/painttomakearectangle
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  dubiousdocument2:
+    main:               Main.hs
+    source-dirs:        app/dubiousdocument2
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  derangement:
+    main:               Main.hs
+    source-dirs:        app/derangement
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  makearectangle:
+    main:               Main.hs
+    source-dirs:        app/makearectangle
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   variouskagamimochi:
     main:               Main.hs
     source-dirs:        app/variouskagamimochi

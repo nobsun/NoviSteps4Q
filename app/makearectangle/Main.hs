@@ -36,19 +36,32 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = I
+type Dom   = [I]
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    as -> case runLength $ sortBy (comparing Down) as of
+        es -> iter 0 es where
+            iter = \ case
+                0 -> \ case
+                    [] -> 0
+                    (a,b):es'
+                        | b >= 4 -> a * a
+                        | b >= 2 -> iter a es'
+                        | otherwise -> iter 0 es'
+                h -> \ case
+                    [] -> 0
+                    (a,b):es'
+                        | b >= 2 -> h * a
+                        | otherwise -> iter h es'
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:as:_ -> case f as of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
@@ -249,11 +262,6 @@ countif = iter 0
     where
         iter a p (x:xs) = iter (bool a (succ a) (p x)) p xs
         iter a _ []     = a
-
-divids :: [a] -> [([a],[a])]
-divids = \ case
-    []         -> [([],[])]
-    xxs@(x:xs) -> ([], xxs) : map (first (x:)) (divids xs)
 
 {- Sized List -}
 data SzL a = SzL Int [a] deriving Eq
