@@ -130,6 +130,22 @@ library:
   source-dirs: src
 
 executables:
+  mindifference:
+    main:               Main.hs
+    source-dirs:        app/mindifference
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  specialtrains:
+    main:               Main.hs
+    source-dirs:        app/specialtrains
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   painttomakearectangle:
     main:               Main.hs
     source-dirs:        app/painttomakearectangle

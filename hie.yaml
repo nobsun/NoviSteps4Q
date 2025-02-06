@@ -303,6 +303,12 @@ cradle:
     - path: "./app/maxsum/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:maxsum"
 
+    - path: "./app/mindifference/Main.hs"
+      component: "NoviSteps4Q:exe:mindifference"
+
+    - path: "./app/mindifference/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:mindifference"
+
     - path: "./app/minimumglutton/Main.hs"
       component: "NoviSteps4Q:exe:minimumglutton"
 
@@ -434,6 +440,12 @@ cradle:
 
     - path: "./app/secretnumber/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:secretnumber"
+
+    - path: "./app/specialtrains/Main.hs"
+      component: "NoviSteps4Q:exe:specialtrains"
+
+    - path: "./app/specialtrains/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:specialtrains"
 
     - path: "./app/stack/Main.hs"
       component: "NoviSteps4Q:exe:stack"
