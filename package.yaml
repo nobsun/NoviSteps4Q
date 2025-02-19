@@ -130,6 +130,62 @@ library:
   source-dirs: src
 
 executables:
+  abc244c:
+    main:               Main.hs
+    source-dirs:        app/abc244c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc296c:
+    main:               Main.hs
+    source-dirs:        app/abc296c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc303c:
+    main:               Main.hs
+    source-dirs:        app/abc303c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc310c:
+    main:               Main.hs
+    source-dirs:        app/abc310c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc392c:
+    main:               Main.hs
+    source-dirs:        app/abc392c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc393c:
+    main:               Main.hs
+    source-dirs:        app/abc393c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  csr002:
+    main:               Main.hs
+    source-dirs:        app/csr002
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   mindifference:
     main:               Main.hs
     source-dirs:        app/mindifference

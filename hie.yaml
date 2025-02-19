@@ -33,6 +33,42 @@ cradle:
     - path: "./app/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:NoviSteps4Q"
 
+    - path: "./app/abc244c/Main.hs"
+      component: "NoviSteps4Q:exe:abc244c"
+
+    - path: "./app/abc244c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc244c"
+
+    - path: "./app/abc296c/Main.hs"
+      component: "NoviSteps4Q:exe:abc296c"
+
+    - path: "./app/abc296c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc296c"
+
+    - path: "./app/abc303c/Main.hs"
+      component: "NoviSteps4Q:exe:abc303c"
+
+    - path: "./app/abc303c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc303c"
+
+    - path: "./app/abc310c/Main.hs"
+      component: "NoviSteps4Q:exe:abc310c"
+
+    - path: "./app/abc310c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc310c"
+
+    - path: "./app/abc392c/Main.hs"
+      component: "NoviSteps4Q:exe:abc392c"
+
+    - path: "./app/abc392c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc392c"
+
+    - path: "./app/abc393c/Main.hs"
+      component: "NoviSteps4Q:exe:abc393c"
+
+    - path: "./app/abc393c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc393c"
+
     - path: "./app/add-entry/Main.hs"
       component: "NoviSteps4Q:exe:add-entry"
 
@@ -152,6 +188,12 @@ cradle:
 
     - path: "./app/colorfulsmiles2/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:colorfulsmiles2"
+
+    - path: "./app/csr002/Main.hs"
+      component: "NoviSteps4Q:exe:csr002"
+
+    - path: "./app/csr002/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:csr002"
 
     - path: "./app/dance/Main.hs"
       component: "NoviSteps4Q:exe:dance"
