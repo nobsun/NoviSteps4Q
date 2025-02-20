@@ -33,6 +33,12 @@ cradle:
     - path: "./app/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:NoviSteps4Q"
 
+    - path: "./app/abc021b/Main.hs"
+      component: "NoviSteps4Q:exe:abc021b"
+
+    - path: "./app/abc021b/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc021b"
+
     - path: "./app/abc244c/Main.hs"
       component: "NoviSteps4Q:exe:abc244c"
 
@@ -194,6 +200,18 @@ cradle:
 
     - path: "./app/csr002/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:csr002"
+
+    - path: "./app/csr002f/Main.hs"
+      component: "NoviSteps4Q:exe:csr002f"
+
+    - path: "./app/csr002f/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:csr002f"
+
+    - path: "./app/csr002k/Main.hs"
+      component: "NoviSteps4Q:exe:csr002k"
+
+    - path: "./app/csr002k/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:csr002k"
 
     - path: "./app/dance/Main.hs"
       component: "NoviSteps4Q:exe:dance"

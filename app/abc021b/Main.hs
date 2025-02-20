@@ -34,21 +34,24 @@ debug :: Bool
 debug = () /= ()
 
 type I = Int
-type O = Int
+type O = String
 
-type Dom   = I
+type Dom   = (I,I,[I])
 type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    i -> undefined i
+    (a,b,pps) -> iter (S.unions (map S.singleton [a,b])) pps where
+        iter vs = \ case
+            []   -> "YES"
+            p:ps -> bool "NO" (iter (S.insert p vs) ps) (S.notMember p vs)
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
-    _:_ -> case f undefined of
-        _rr -> [[]]
+    _:[a,b]:_:pps:_ -> case f (a,b,pps) of
+        r -> [[r]]
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
