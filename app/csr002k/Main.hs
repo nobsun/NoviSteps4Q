@@ -22,16 +22,20 @@ import Data.Function
 import Data.List
 import Text.Printf
 
+import Data.Graph qualified as G
+import Data.Tree qualified as T
 import Data.IntMap qualified as IM
 import Data.IntSet qualified as IS
 import Data.Map qualified as M
 import Data.Set qualified as S
+import Data.Tuple
 import Data.Vector qualified as V
 
 import Debug.Trace qualified as Debug
+import Data.Graph.Inductive (Graph(noNodes))
 
 debug :: Bool
-debug = () /= ()
+debug = () == ()
 
 type I = Int
 type O = Int
@@ -43,14 +47,24 @@ type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    hts -> iter S.empty hts
+    hts -> sum $ map (phi . T.flatten) $ G.components gr
         where
-            mn = M.fromList $ runLength $ sort $ concatMap fromTuple hts
-            iter ss = \ case
-                [] -> S.size ss
-                (a,b):rs -> iter (S.insert c ss) rs
-                    where
-                        c = bool a b (mn M.! a > mn M.! b)
+            ns = foldl' f S.empty hts
+                where
+                    f s (x,y) = S.insert x (S.insert y s)
+            n  = S.size ns
+            v2n = listArray (0,pred n :: Int) $ S.toList ns
+            n2v = M.fromList $ map swap $ assocs v2n
+            hts' = concatMap g hts
+                where
+                    g (x,y) = if x == y && False then [(x',y')]
+                              else [(x',y'), (y',x')]
+                        where
+                            (x',y') = (n2v M.! x, n2v M.! y)
+            gr = tracing $ G.buildG (bounds v2n) hts'
+            phi xs = min (length xs) (sum [ods ! x | x <- xs ] `div` 2)
+                where
+                    ods = G.outdegree gr
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
