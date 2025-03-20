@@ -50,9 +50,8 @@ solve = \ case
             iter s = \ case
                 []   -> invalid
                 0:_  -> []
-                i:is -> case S.delete i s of
-                    t    -> case S.deleteFindMin t of
-                        (j,u) -> j : iter u is
+                i:is -> case S.deleteFindMin $ S.delete i s of
+                    (j,t) -> j : iter t is
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = \ case
@@ -61,14 +60,14 @@ wrap f = \ case
     _   -> error "wrap: invalid input format"
 
 main :: IO ()
--- main = B.interact (encode . wrap solve . decode)
--- main = interactWithFlush (encode . wrap solve . decode)
-main = do
-    { n <- readInt <$> B.getLine
-    ; B.putStrLn (showInt 1)
-    ; hFlush stdout
-    ; iterLoop (S.fromList [2 .. 2*n+1])
-    }
+main = B.interact (encode . wrap solve . decode)
+-- -- main = interactWithFlush (encode . wrap solve . decode)
+-- main = do
+--     { n <- readInt <$> B.getLine
+--     ; B.putStrLn (showInt 1)
+--     ; hFlush stdout
+--     ; iterLoop (S.fromList [2 .. 2*n+1])
+--     }
 
 iterLoop :: S.Set Int -> IO ()
 iterLoop s = do
