@@ -130,6 +130,22 @@ library:
   source-dirs: src
 
 executables:
+  abc398c:
+    main:               Main.hs
+    source-dirs:        app/abc398c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc395c:
+    main:               Main.hs
+    source-dirs:        app/abc395c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   abc394c:
     main:               Main.hs
     source-dirs:        app/abc394c
