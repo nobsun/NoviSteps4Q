@@ -57,6 +57,12 @@ cradle:
     - path: "./app/abc244c/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:abc244c"
 
+    - path: "./app/abc247c/Main.hs"
+      component: "NoviSteps4Q:exe:abc247c"
+
+    - path: "./app/abc247c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc247c"
+
     - path: "./app/abc296c/Main.hs"
       component: "NoviSteps4Q:exe:abc296c"
 
