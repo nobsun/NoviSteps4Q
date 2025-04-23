@@ -37,26 +37,36 @@ import Debug.Trace qualified as Debug
 debug :: Bool
 debug = () /= ()
 
-type I = Int
-type O = Int
+type I = Char
+type O = String
 
-type Dom   = ()
-type Codom = ()
+type Dom   = (Int,Int,[[I]])
+type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    () -> ()
+    (h,w,bss) -> bool "No" "Yes" (S.null $ S.intersection xs ys) where
+        css = splitEvery w $ assocs $ listArray ((1,1),(h,w)) (concat bss)
+        dss = transpose css
+        xs = S.fromList $ map fst $ concat $ concatMap psi css
+        ys = S.fromList $ map fst $ concat $ concatMap psi dss
+        psi = filter phi . groupBy ((==) `on` snd)
+        phi = \ case
+            [(_,'#')] -> True
+            _         -> False
 
 toDom     :: [[I]] -> Dom
 toDom     = \ case
-    _:_ -> ()
+    hw:bss -> case map read $ words hw of
+        [h,w]  -> (h,w,bss)
+        _      -> invalid $ "toDom: " ++ show @Int __LINE__
     _   -> invalid $ "toDom: " ++ show @Int __LINE__
 
 fromCodom :: Codom -> [[O]]
 fromCodom = \ case
-    _rr -> [[]]
+    r -> [[r]]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = fromCodom . f . toDom
