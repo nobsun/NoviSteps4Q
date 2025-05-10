@@ -57,17 +57,53 @@ cradle:
     - path: "./app/abc096c/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:abc096c"
 
+    - path: "./app/abc100c/Main.hs"
+      component: "NoviSteps4Q:exe:abc100c"
+
+    - path: "./app/abc100c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc100c"
+
     - path: "./app/abc131c/Main.hs"
       component: "NoviSteps4Q:exe:abc131c"
 
     - path: "./app/abc131c/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:abc131c"
 
+    - path: "./app/abc139c/Main.hs"
+      component: "NoviSteps4Q:exe:abc139c"
+
+    - path: "./app/abc139c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc139c"
+
+    - path: "./app/abc162c/Main.hs"
+      component: "NoviSteps4Q:exe:abc162c"
+
+    - path: "./app/abc162c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc162c"
+
     - path: "./app/abc169c/Main.hs"
       component: "NoviSteps4Q:exe:abc169c"
 
     - path: "./app/abc169c/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:abc169c"
+
+    - path: "./app/abc181c/Main.hs"
+      component: "NoviSteps4Q:exe:abc181c"
+
+    - path: "./app/abc181c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc181c"
+
+    - path: "./app/abc200c/Main.hs"
+      component: "NoviSteps4Q:exe:abc200c"
+
+    - path: "./app/abc200c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc200c"
+
+    - path: "./app/abc228c/Main.hs"
+      component: "NoviSteps4Q:exe:abc228c"
+
+    - path: "./app/abc228c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc228c"
 
     - path: "./app/abc237c/Main.hs"
       component: "NoviSteps4Q:exe:abc237c"
@@ -98,6 +134,12 @@ cradle:
 
     - path: "./app/abc296c/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:abc296c"
+
+    - path: "./app/abc297d/Main.hs"
+      component: "NoviSteps4Q:exe:abc297d"
+
+    - path: "./app/abc297d/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:abc297d"
 
     - path: "./app/abc300c/Main.hs"
       component: "NoviSteps4Q:exe:abc300c"
@@ -164,6 +206,24 @@ cradle:
 
     - path: "./app/agc010a/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:agc010a"
+
+    - path: "./app/arc004b/Main.hs"
+      component: "NoviSteps4Q:exe:arc004b"
+
+    - path: "./app/arc004b/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:arc004b"
+
+    - path: "./app/arc107a/Main.hs"
+      component: "NoviSteps4Q:exe:arc107a"
+
+    - path: "./app/arc107a/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:arc107a"
+
+    - path: "./app/arc110a/Main.hs"
+      component: "NoviSteps4Q:exe:arc110a"
+
+    - path: "./app/arc110a/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:arc110a"
 
     - path: "./app/atcodeerandelectionreport/Main.hs"
       component: "NoviSteps4Q:exe:atcodeerandelectionreport"
@@ -423,6 +483,24 @@ cradle:
     - path: "./app/makethemnarrow/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:makethemnarrow"
 
+    - path: "./app/matha085/Main.hs"
+      component: "NoviSteps4Q:exe:matha085"
+
+    - path: "./app/matha085/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:matha085"
+
+    - path: "./app/matha087/Main.hs"
+      component: "NoviSteps4Q:exe:matha087"
+
+    - path: "./app/matha087/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:matha087"
+
+    - path: "./app/matha089/Main.hs"
+      component: "NoviSteps4Q:exe:matha089"
+
+    - path: "./app/matha089/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:matha089"
+
     - path: "./app/maximalvalue/Main.hs"
       component: "NoviSteps4Q:exe:maximalvalue"
 
@@ -488,6 +566,18 @@ cradle:
 
     - path: "./app/painttomakearectangle/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:painttomakearectangle"
+
+    - path: "./app/pana2020b/Main.hs"
+      component: "NoviSteps4Q:exe:pana2020b"
+
+    - path: "./app/pana2020b/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:pana2020b"
+
+    - path: "./app/pana2020c/Main.hs"
+      component: "NoviSteps4Q:exe:pana2020c"
+
+    - path: "./app/pana2020c/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:pana2020c"
 
     - path: "./app/party/Main.hs"
       component: "NoviSteps4Q:exe:party"
@@ -656,6 +746,30 @@ cradle:
 
     - path: "./app/tripleatack/Paths_NoviSteps4Q.hs"
       component: "NoviSteps4Q:exe:tripleatack"
+
+    - path: "./app/typi90-010/Main.hs"
+      component: "NoviSteps4Q:exe:typi90-010"
+
+    - path: "./app/typi90-010/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:typi90-010"
+
+    - path: "./app/typi90-022/Main.hs"
+      component: "NoviSteps4Q:exe:typi90-022"
+
+    - path: "./app/typi90-022/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:typi90-022"
+
+    - path: "./app/typi90-024/Main.hs"
+      component: "NoviSteps4Q:exe:typi90-024"
+
+    - path: "./app/typi90-024/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:typi90-024"
+
+    - path: "./app/typi90-075/Main.hs"
+      component: "NoviSteps4Q:exe:typi90-075"
+
+    - path: "./app/typi90-075/Paths_NoviSteps4Q.hs"
+      component: "NoviSteps4Q:exe:typi90-075"
 
     - path: "./app/unification/Main.hs"
       component: "NoviSteps4Q:exe:unification"

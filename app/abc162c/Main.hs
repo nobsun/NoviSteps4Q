@@ -40,23 +40,23 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = ()
-type Codom = ()
+type Dom   = Int
+type Codom = Int
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    () -> ()
+    k -> sum [ gcd a (gcd b c) | a <- [1..k], b <- [1..k], c <- [1..k]]
 
 toDom     :: [[I]] -> Dom
 toDom     = \ case
-    _:_ -> ()
+    [k]:_ -> k
     _   -> invalid $ "toDom: " ++ show @Int __LINE__
 
 fromCodom :: Codom -> [[O]]
 fromCodom = \ case
-    _rr -> [[]]
+    r -> [[r]]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = fromCodom . f . toDom

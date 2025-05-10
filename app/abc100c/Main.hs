@@ -40,23 +40,26 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = ()
-type Codom = ()
+type Dom   = [I]
+type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    () -> ()
+    as -> sum $ map (phi 0) as where
+        phi c n = case divMod n 2 of
+            (q,0) -> phi (succ c) q
+            _     -> c
 
 toDom     :: [[I]] -> Dom
 toDom     = \ case
-    _:_ -> ()
+    _:as:_ -> as
     _   -> invalid $ "toDom: " ++ show @Int __LINE__
 
 fromCodom :: Codom -> [[O]]
 fromCodom = \ case
-    _rr -> [[]]
+    r -> [[r]]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = fromCodom . f . toDom

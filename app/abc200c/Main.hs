@@ -40,23 +40,26 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = ()
-type Codom = ()
+type Dom   = [I]
+type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    () -> ()
+    as -> iter 0 $ map snd $ runLength $ sort $ map (`mod` 200) as where
+        iter c = \ case
+            [] -> c
+            x:xs -> iter (c + nCr x 2) xs
 
 toDom     :: [[I]] -> Dom
 toDom     = \ case
-    _:_ -> ()
+    _:as:_ -> as
     _   -> invalid $ "toDom: " ++ show @Int __LINE__
 
 fromCodom :: Codom -> [[O]]
 fromCodom = \ case
-    _rr -> [[]]
+    r -> [[r]]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = fromCodom . f . toDom
@@ -192,7 +195,8 @@ combinations = \ case
 {- binominal coefficients -}
 nCr :: Integral a => a -> a -> a
 nCr n r
-    | n < 0  || r < 0  || n < r  = error $ "nCr: " ++ show @Int __LINE__ ++ ", negative "
+    | n < 0  || r < 0  = error $ "nCr: " ++ show @Int __LINE__ ++ ", negative "
+    | n < r = 0 
     | n == 0 || r == 0 || n == r = 1
     | otherwise                  = iter 1 n 1
     where

@@ -130,6 +130,158 @@ library:
   source-dirs: src
 
 executables:
+  abc200c:
+    main:               Main.hs
+    source-dirs:        app/abc200c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc162c:
+    main:               Main.hs
+    source-dirs:        app/abc162c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc100c:
+    main:               Main.hs
+    source-dirs:        app/abc100c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  arc004b:
+    main:               Main.hs
+    source-dirs:        app/arc004b
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc181c:
+    main:               Main.hs
+    source-dirs:        app/abc181c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  arc110a:
+    main:               Main.hs
+    source-dirs:        app/arc110a
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  matha085:
+    main:               Main.hs
+    source-dirs:        app/matha085
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  matha087:
+    main:               Main.hs
+    source-dirs:        app/matha087
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  matha089:
+    main:               Main.hs
+    source-dirs:        app/matha089
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  arc107a:
+    main:               Main.hs
+    source-dirs:        app/arc107a
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  pana2020b:
+    main:               Main.hs
+    source-dirs:        app/pana2020b
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  pana2020c:
+    main:               Main.hs
+    source-dirs:        app/pana2020c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc139c:
+    main:               Main.hs
+    source-dirs:        app/abc139c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  typi90-075:
+    main:               Main.hs
+    source-dirs:        app/typi90-075
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  typi90-024:
+    main:               Main.hs
+    source-dirs:        app/typi90-024
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  typi90-022:
+    main:               Main.hs
+    source-dirs:        app/typi90-022
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  typi90-010:
+    main:               Main.hs
+    source-dirs:        app/typi90-010
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc228c:
+    main:               Main.hs
+    source-dirs:        app/abc228c
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
+  abc297d:
+    main:               Main.hs
+    source-dirs:        app/abc297d
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - NoviSteps4Q
+
   abc096c:
     main:               Main.hs
     source-dirs:        app/abc096c

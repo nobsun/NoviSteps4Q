@@ -35,28 +35,39 @@ import Data.Vector qualified as V
 import Debug.Trace qualified as Debug
 
 debug :: Bool
-debug = () /= ()
+debug = () == ()
 
 type I = Int
-type O = Int
+type O = String
 
-type Dom   = ()
-type Codom = ()
+type Dom   = (I,I,I)
+type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    () -> ()
+    (n,x,y) -> bool "Yes" "No" $ null cs where
+        cs = [ (a,b,c,d) 
+             | a <- [1 .. n]
+             , mod y a == 0
+             , b <- [a .. n]
+             , mod (div y a) b == 0
+             , c <- [b .. n]
+             , mod (div (div y a) b) c == 0
+             , d <- [c .. n]
+             , x == a + b + c + d
+             , y == a * b * c * d
+             ]
 
 toDom     :: [[I]] -> Dom
 toDom     = \ case
-    _:_ -> ()
+    [n,x,y]:_ -> (n,x,y)
     _   -> invalid $ "toDom: " ++ show @Int __LINE__
 
 fromCodom :: Codom -> [[O]]
 fromCodom = \ case
-    _rr -> [[]]
+    r -> [[r]]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = fromCodom . f . toDom
@@ -476,16 +487,6 @@ mexpt !b = \ case
       | otherwise -> mexpt (mmul b b) (o `div` 2)
 
 {- prime numbers -}
-primeFactors :: Int -> [Int]
-primeFactors n = unfoldr f (n,2)
-    where
-        f = \ case
-            (1,_) -> Nothing
-            (m,p) | m < p^!2  -> Just (m,(1,m))
-                  | otherwise -> case divMod m p of
-                (q,0) -> Just (p,(q,p))
-                _ | p == 2    -> f (m,3)
-                  | otherwise -> f (m,p+2)
 
 primesLT1000 :: [Int]
 primesLT1000

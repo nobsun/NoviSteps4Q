@@ -40,23 +40,33 @@ debug = () /= ()
 type I = Int
 type O = Int
 
-type Dom   = ()
-type Codom = ()
+type Dom   = (I,[(I,I)],[(I,I)])
+type Codom = [[O]]
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    () -> ()
+    (n,cps,lrs) -> phi <$> lrs where
+        phi (l,r) = case sub (cs ! pred l) (cs ! r) of
+            (x,y) -> [x,y]
+        sub (x,y) (z,w) = (subtract x z, subtract y w)
+        cs = listArray (0,n) $ scanl' psi (0,0) cps
+        psi (x,y) = \ case
+            (1,p) -> (x+p,y)
+            (2,p) -> (x,y+p)
+            _     -> invalid $ show @Int __LINE__
 
 toDom     :: [[I]] -> Dom
 toDom     = \ case
-    _:_ -> ()
+    [n]:dss -> case splitAt n dss of
+        (cps,_:lrs) -> (n,toTuple <$> cps,toTuple <$> lrs)
+        _           -> invalid $ "toDom: " ++ show @Int __LINE__
     _   -> invalid $ "toDom: " ++ show @Int __LINE__
 
 fromCodom :: Codom -> [[O]]
 fromCodom = \ case
-    _rr -> [[]]
+    rr -> rr
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = fromCodom . f . toDom
@@ -435,8 +445,8 @@ cp = \ case
 
 {- integer arithmetic -}
 
-isqrt :: Integral a => a -> (a,a)
-isqrt = (fromInteger *** fromInteger) . sqrtI . toInteger
+isqrt :: Integral a => a -> a
+isqrt = fromInteger . sqrtI . toInteger
 
 infixr 8 ^!
 
@@ -446,12 +456,11 @@ infixr 8 ^!
 averageI :: Integer -> Integer -> Integer
 averageI m n = (m + n) `div` 2
 
-sqrtI :: Integer -> (Integer, Integer)
+sqrtI :: Integer -> Integer
 sqrtI = \ case
-    m@(_n+2)      -> case until (good m) (improve m) 1 of
-        k             -> (k,m - k*k)
+    m@(_n+2)      -> until (good m) (improve m) 1
     m | m < 0     -> error "sqrtI: negative"
-      | otherwise -> (m, 0)
+      | otherwise -> m
     where 
         good x g = g ^! 2 <= x && x < succ g ^! 2
         improve x g = averageI g (x `div` g)
@@ -476,16 +485,6 @@ mexpt !b = \ case
       | otherwise -> mexpt (mmul b b) (o `div` 2)
 
 {- prime numbers -}
-primeFactors :: Int -> [Int]
-primeFactors n = unfoldr f (n,2)
-    where
-        f = \ case
-            (1,_) -> Nothing
-            (m,p) | m < p^!2  -> Just (m,(1,m))
-                  | otherwise -> case divMod m p of
-                (q,0) -> Just (p,(q,p))
-                _ | p == 2    -> f (m,3)
-                  | otherwise -> f (m,p+2)
 
 primesLT1000 :: [Int]
 primesLT1000

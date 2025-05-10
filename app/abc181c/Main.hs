@@ -38,25 +38,36 @@ debug :: Bool
 debug = () /= ()
 
 type I = Int
-type O = Int
+type O = String
 
-type Dom   = ()
-type Codom = ()
+type Dom   = [(I,I)]
+type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    () -> ()
+    xys -> bool "No" "Yes" $ any onALine $ combinations 3 xys 
+
+onALine :: (Eq a, Num a) => [(a,a)] -> Bool
+onALine = \ case
+    [a,b,c] -> (a `sub` b) `oprod` (a `sub` c) == 0
+    _       -> invalid $ show @Int __LINE__
+
+sub :: Num a => (a,a) -> (a,a) -> (a,a)
+sub (a1,a2) = subtract a1 *** subtract a2
+
+oprod :: Num a => (a,a) -> (a,a) -> a
+oprod (a,b) (c,d) = a * d - b * c
 
 toDom     :: [[I]] -> Dom
 toDom     = \ case
-    _:_ -> ()
+    _:xys -> toTuple <$> xys
     _   -> invalid $ "toDom: " ++ show @Int __LINE__
 
 fromCodom :: Codom -> [[O]]
 fromCodom = \ case
-    _rr -> [[]]
+    r -> [[r]]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = fromCodom . f . toDom

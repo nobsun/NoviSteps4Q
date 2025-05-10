@@ -38,25 +38,32 @@ debug :: Bool
 debug = () /= ()
 
 type I = Int
-type O = Int
+type O = String
 
-type Dom   = ()
-type Codom = ()
+type Dom   = (I,I,I)
+type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    () -> ()
+    (a,b,c) 
+        | c == 1 -> "No"
+        | otherwise -> iter 1 1 where
+        iter cnt = \ case
+            v | b < cnt -> "No"
+              | dm < (v,0) -> "Yes"
+              | otherwise  -> iter (succ cnt) (v*c)
+        dm = divMod a c
 
 toDom     :: [[I]] -> Dom
 toDom     = \ case
-    _:_ -> ()
+    [a,b,c]:_ -> (a,b,c)
     _   -> invalid $ "toDom: " ++ show @Int __LINE__
 
 fromCodom :: Codom -> [[O]]
 fromCodom = \ case
-    _rr -> [[]]
+    r -> [[r]]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = fromCodom . f . toDom
@@ -476,16 +483,6 @@ mexpt !b = \ case
       | otherwise -> mexpt (mmul b b) (o `div` 2)
 
 {- prime numbers -}
-primeFactors :: Int -> [Int]
-primeFactors n = unfoldr f (n,2)
-    where
-        f = \ case
-            (1,_) -> Nothing
-            (m,p) | m < p^!2  -> Just (m,(1,m))
-                  | otherwise -> case divMod m p of
-                (q,0) -> Just (p,(q,p))
-                _ | p == 2    -> f (m,3)
-                  | otherwise -> f (m,p+2)
 
 primesLT1000 :: [Int]
 primesLT1000

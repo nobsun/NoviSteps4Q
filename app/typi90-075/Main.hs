@@ -33,30 +33,55 @@ import Data.Tree qualified as T
 import Data.Vector qualified as V
 
 import Debug.Trace qualified as Debug
+import qualified Data.Tree as T
+import Data.Tree (Tree(subForest))
 
 debug :: Bool
-debug = () /= ()
+debug = () == ()
 
 type I = Int
 type O = Int
 
-type Dom   = ()
-type Codom = ()
+type Dom   = I
+type Codom = O
 
 type Solver = Dom -> Codom
 
 solve :: Solver
 solve = \ case
-    () -> ()
+    n -> phi $ length $ primeFactors n where
+        phi m = countLeadingZeros (pred m) `subtract` finiteBitSize m
+{-
+solve = \ case
+    n -> case primeFactors n of
+        fs -> case mkTree fs of
+            t -> pred $ depth t
+-}
+
+mkTree :: [Int] -> T.Tree Int
+mkTree = forkAll . map phi . splitEvery 2 where
+    phi = \ case
+        [x]   -> T.Node { rootLabel = x, subForest = []}
+        [x,y] -> T.Node { rootLabel = x * y, subForest = [xt,yt] } where
+            xt = T.Node { rootLabel = x, subForest = []}
+            yt = T.Node { rootLabel = y, subForest = []}
+        _     -> impossible $ show @Int __LINE__
+    forkAll = \ case
+        [xt] -> xt
+        xts  -> forkAll (forkPair xts)
+    forkPair = \ case
+        a:b:xts -> T.Node { rootLabel = a.rootLabel * b.rootLabel
+                          , subForest = [a,b] } : forkPair xts
+        xts     -> xts
 
 toDom     :: [[I]] -> Dom
 toDom     = \ case
-    _:_ -> ()
-    _   -> invalid $ "toDom: " ++ show @Int __LINE__
+    [n]:_ -> n
+    _     -> invalid $ "toDom: " ++ show @Int __LINE__
 
 fromCodom :: Codom -> [[O]]
 fromCodom = \ case
-    _rr -> [[]]
+    r -> [[r]]
 
 wrap :: Solver -> ([[I]] -> [[O]])
 wrap f = fromCodom . f . toDom
@@ -435,8 +460,8 @@ cp = \ case
 
 {- integer arithmetic -}
 
-isqrt :: Integral a => a -> (a,a)
-isqrt = (fromInteger *** fromInteger) . sqrtI . toInteger
+isqrt :: Integral a => a -> a
+isqrt = fromInteger . sqrtI . toInteger
 
 infixr 8 ^!
 
@@ -446,15 +471,17 @@ infixr 8 ^!
 averageI :: Integer -> Integer -> Integer
 averageI m n = (m + n) `div` 2
 
-sqrtI :: Integer -> (Integer, Integer)
+sqrtI :: Integer -> Integer
 sqrtI = \ case
-    m@(_n+2)      -> case until (good m) (improve m) 1 of
-        k             -> (k,m - k*k)
+    m@(_n+2)      -> until (good m) (improve m) 1
     m | m < 0     -> error "sqrtI: negative"
-      | otherwise -> (m, 0)
+      | otherwise -> m
     where 
         good x g = g ^! 2 <= x && x < succ g ^! 2
         improve x g = averageI g (x `div` g)
+
+div' :: Integral a => a -> a -> a
+div' m n = negate (div m (negate n))
 
 {- modular arithmetic -}
 base :: Int
@@ -487,9 +514,10 @@ primeFactors n = unfoldr f (n,2)
                 _ | p == 2    -> f (m,3)
                   | otherwise -> f (m,p+2)
 
-primesLT1000 :: [Int]
+primesLT1000 :: IS.IntSet
 primesLT1000
-    = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97
+    = IS.fromList 
+      [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97
       ,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199
       ,211,223,227,229,233,239,241,251,257,263,269,271,277,281,283,293
       ,307,311,313,317,331,337,347,349,353,359,367,373,379,383,389,397
